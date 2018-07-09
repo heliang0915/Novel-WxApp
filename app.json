@@ -1,0 +1,43 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/me/me",
+    "pages/bookshelf/index",
+    "pages/login/index"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "backgroundColor": "#eee",
+    "navigationBarBackgroundColor": "#409EFF",
+    "navigationBarTitleText": "小说网",
+    "navigationBarTextStyle": "#FFF",
+    "enablePullDownRefresh": false
+  },
+  "debug": false,
+  "tabBar": {
+    "color": "#8A8A8A",
+    "selectedColor": "#409EFF",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/bookshelf/index",
+        "iconPath": "images/book-shelf.png",
+        "selectedIconPath": "images/book-shelf-active.png",
+        "text": "书架"
+      },
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "images/book-city.png",
+        "selectedIconPath": "images/book-city-active.png",
+        "text": "书库"
+      },
+      {
+        "pagePath": "pages/me/me",
+        "iconPath": "images/me.png",
+        "selectedIconPath": "images/me-active.png",
+        "text": "我的"
+      }
+    ]
+  }
+}

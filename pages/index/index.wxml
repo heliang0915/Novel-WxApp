@@ -1,0 +1,103 @@
+<!--我的书库-->
+<view class="container">
+  <view class='book-city-top'>
+    <swiper indicator-dots='true' autoplay='true' interval='5000' circular='true'>
+      <block wx:for="{{banners}}" wx:key="index">
+        <swiper-item bindtap="gotoTab">
+            <image lazy-load="true" src="{{item}}" class='image-banner'></image>
+        </swiper-item>
+      </block>
+    </swiper>
+    <view class='book-nav'>
+     <view class='book-nav-inner'>
+      <view>
+          <image src="../../images/book-city-active.png"></image>
+          <text>分类</text>
+      </view>
+       <view>
+          <image src="../../images/book-city-active.png"></image>
+          <text>排行</text>
+      </view>
+        <view>
+          <image src="../../images/book-city-active.png"></image>
+          <text>书单</text>
+      </view>
+       <view>
+          <image src="../../images/book-city-active.png"></image>
+          <text>漫画</text>
+      </view>
+    </view>
+    </view>
+  </view>
+  <view class='book-city-center'>
+      <view class='book-list'>
+        <view class='book-list-inner'>
+            <view class='category-title'>男频热推</view>
+            <view class='book-item'>
+              <image src="https://i.zhulang.com/book_cover/image/51/61/516164_x160.jpg"></image>
+              <view class='book-detail'>
+                  <text class='book-title'>永恒圣帝</text>
+                  <text class='book-desc'>这座这座这座这座这座这座这座这座这座这座这座这座这座这座这座这座这座这座...</text>
+                  <view class='book-info'>
+                    <view class='book-rq'>
+                      作者 | <text>1.9万</text>人气
+                    </view>
+                    <view class='book-tags'>
+                      <view class='book-tag'>玄幻</view>
+                      <view class='book-tag'>玄幻</view>
+                    </view>                  
+                  </view>
+              </view>
+            </view>
+            <view class='book-item'>
+              <image src="https://i.zhulang.com/book_cover/image/51/61/516164_x160.jpg"></image>
+              <view class='book-detail'>
+                  <text class='book-title'>永恒圣帝</text>
+                  <text class='book-desc'>这座这座这座这座这座这座这座这座这座这座这座这座这座这座这座这座这座这座...</text>
+                  <view class='book-info'>
+                    <view class='book-rq'>
+                      作者 | <text>1.9万</text>人气
+                    </view>
+                    <view class='book-tags'>
+                      <view class='book-tag'>玄幻</view>
+                      <view class='book-tag'>玄幻</view>
+                    </view>                  
+                  </view>
+              </view>
+            </view>
+            <view class='book-item'>
+              <image src="https://i.zhulang.com/book_cover/image/51/61/516164_x160.jpg"></image>
+              <view class='book-detail'>
+                  <text class='book-title'>永恒圣帝</text>
+                  <text class='book-desc'>这座这座这座这座这座这座这座这座这座这座这座这座这座这座这座这座这座这座...</text>
+                  <view class='book-info'>
+                    <view class='book-rq'>
+                      作者 | <text>1.9万</text>人气
+                    </view>
+                    <view class='book-tags'>
+                      <view class='book-tag'>玄幻</view>
+                      <view class='book-tag'>玄幻</view>
+                    </view>                  
+                  </view>
+              </view>
+            </view>
+            <view class='book-item'>
+              <image src="https://i.zhulang.com/book_cover/image/51/61/516164_x160.jpg"></image>
+              <view class='book-detail'>
+                  <text class='book-title'>永恒圣帝</text>
+                  <text class='book-desc'>这座这座这座这座这座这座这座这座这座这座这座这座这座这座这座这座这座这座...</text>
+                  <view class='book-info'>
+                    <view class='book-rq'>
+                      作者 | <text>1.9万</text>人气
+                    </view>
+                    <view class='book-tags'>
+                      <view class='book-tag'>玄幻</view>
+                      <view class='book-tag'>玄幻</view>
+                    </view>                  
+                  </view>
+              </view>
+            </view>
+        </view>
+      </view>
+  </view>
+</view>

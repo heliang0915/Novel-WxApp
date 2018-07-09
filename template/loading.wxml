@@ -1,0 +1,8 @@
+<!--加载更多模板  -->
+<template name="more">
+      <view class='more' style=""><view class="loadding"></view>正在加载...</view>
+</template>
+
+<template name="nodata">
+      <view class='more'>没有更多数据了</view>
+</template>

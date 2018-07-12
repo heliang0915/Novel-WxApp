@@ -1,0 +1,95 @@
+.detail-wrap{
+  margin:22rpx 0;
+  font-size: 24rpx;
+  color: #000;
+}
+.book-info-wrap{
+  /* display: flex; */
+}
+.book-top{
+  display: flex;
+  padding:0 26rpx;
+}
+.book-info-wrap image{
+   width: 198rpx;
+   height: 267rpx;
+   margin-right: 32rpx;
+}
+.book-info-wrap .book-info{
+   color:#5a5a5a;
+}
+.book-info .book-name{
+   font-size: 36rpx;
+   font-style:bold;
+   margin-bottom: 11rpx;
+   display: block;
+   color: #000;
+   margin-top:10rpx;
+}
+.book-info-wrap .book-info .star,.book-look .star{
+    width: 28rpx;
+    height: 28rpx;
+    margin: 0 5rpx;
+}
+.book-info-wrap .book-info .stars{
+  display: flex;
+  align-items: center;
+  margin-bottom: 12rpx;
+}
+.book-info .stars text{
+   color: #f7bf1d;
+   font-size: 32rpx;
+   margin-right: 20rpx;
+}
+
+.book-info .book-author,.book-info .book-update{
+  margin-bottom: 15rpx;
+}
+.book-info .book-author{
+  font-size: 28rpx;
+  margin-bottom: 20rpx;
+}
+
+.book-info .book-author .outer{
+  color: #c4000d;
+}
+.book-split{
+  margin:0 12rpx;
+  color:#ccc;
+}
+.book-score{
+  display: flex;
+  margin-top: 74rpx;
+  font-size: 26rpx;
+  padding-bottom: 26rpx;
+  border-bottom: 1px solid #eee;
+}
+.book-score view{
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.book-score view text{
+  margin-bottom: 12rpx;
+  display: block;
+  text-align: center;
+}
+.book-score view text:first-child{
+  color: #5a5a5a;
+}
+
+.book-look{
+  border-bottom: 1px solid #eee;
+}
+.book-look-inner{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #d9d9d9;
+  width: 696rpx;
+  height: 84rpx;
+  font-size: 26rpx;
+  margin: 34rpx auto;  
+  border-radius: 8rpx;
+}

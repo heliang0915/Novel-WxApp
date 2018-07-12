@@ -1,0 +1,57 @@
+<!--detail.wxml-->
+<view class='detail-wrap'>
+    <view class='book-info-wrap'>
+      <view class='book-top'>
+           <image src="../../images/cover.jpg"></image>
+       <view class='book-info'>
+          <text class='book-name'>修罗大地</text>
+          <view class='stars'>
+              <text>8.8</text>
+               <view wx:for="{{golds}}" wx:key="{{item}}">
+                <image class="star" src="{{item>starId?empty_star:full_star}}"></image>
+              </view>
+              <view class='book-split'>|</view>
+              <view>4.4万人评</view>
+          </view>
+          <view class="book-author">
+            <text class='outer'>实验小白鼠</text>
+            <text class='book-split'>|</text>
+            <text>东方不败</text>
+          </view>
+          <view class="book-update">
+            <text>100万字</text>
+            <text class='book-split'>|</text>
+            <text>3小时前更新</text>
+          </view>
+          <text>书币/千字</text>
+       </view>
+      </view>
+      <view class='book-score'>
+        <view>
+          <text>追书人气</text>
+          <text>1111</text>
+        </view>
+        <view>
+            <text>读者留存</text>
+            <text>1111</text>
+        </view>
+        <view>
+            <text>社区帖子</text>
+          <text>1111</text>
+        </view>
+        <view>
+          <text>日更字数</text>
+          <text>1111</text>
+        </view>
+      </view>
+      <view class="book-look">
+        <view class='book-look-inner'>
+          看过  
+          <view style='margin-left:10rpx;' wx:for="{{[1,2,3,4,5]}}" wx:key="{{item}}">
+                  <image class="star" src="{{empty_star}}"></image>
+            </view>
+        </view>
+         
+      </view>
+    </view>
+</view>

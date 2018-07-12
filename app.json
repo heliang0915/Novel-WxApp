@@ -3,6 +3,7 @@
     "pages/index/index",
     "pages/me/me",
     "pages/bookshelf/index",
+    "pages/book/detail",
     "pages/login/index"
   ],
   "window": {

@@ -5,7 +5,7 @@ let config = {
   // ,
   // api: "https://blogapi.applinzi.com/"
   // ,
-  api: "http://127.0.0.1:2222/"
+  api: "http://10.10.10.224:2222/"
  }
 
 module.exports=config;

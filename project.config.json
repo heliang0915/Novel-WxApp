@@ -44,6 +44,12 @@
 					"name": "首页",
 					"pathName": "pages/index/index",
 					"query": ""
+				},
+				{
+					"id": 2,
+					"name": "详情",
+					"pathName": "pages/book/book-detail",
+					"query": "id=53115e30173bfacb4904897e"
 				}
 			]
 		}

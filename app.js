@@ -20,9 +20,11 @@ App({
            
         }else{
           console.log("需要登录");
-          wx.navigateTo({
-            url: '../login/index',
-          })
+          setTimeout(()=>{
+            wx.navigateTo({
+              url: '../login/index',
+            })
+          },1000)
         }
       }
     })

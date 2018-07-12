@@ -11,91 +11,51 @@
     <view class='book-nav'>
      <view class='book-nav-inner'>
       <view>
-          <image src="../../images/book-city-active.png"></image>
+          <image src="../../images/category.png"></image>
           <text>分类</text>
       </view>
        <view>
-          <image src="../../images/book-city-active.png"></image>
+          <image src="../../images/rank.png"></image>
           <text>排行</text>
       </view>
         <view>
-          <image src="../../images/book-city-active.png"></image>
+          <image src="../../images/finish.png"></image>
           <text>书单</text>
       </view>
        <view>
-          <image src="../../images/book-city-active.png"></image>
-          <text>漫画</text>
+          <image src="../../images/free.png"></image>
+          <text>免费</text>
       </view>
     </view>
     </view>
   </view>
   <view class='book-city-center'>
-      <view class='book-list'>
+     <!--推荐位 -->
+     <view class='book-loadding'  wx:if="{{loaded==false}}">
+       <image src="../../images/loadding.gif"></image>
+        <view>数据加载中...</view>  
+     </view>
+
+      <view class='book-list' wx:if="{{loaded==true}}" wx:key="{{key}}" wx:for-item="category" wx:for-index="key"  wx:for="{{categorys}}">
         <view class='book-list-inner'>
-            <view class='category-title'>男频热推</view>
-            <view class='book-item'>
-              <image src="https://i.zhulang.com/book_cover/image/51/61/516164_x160.jpg"></image>
-              <view class='book-detail'>
-                  <text class='book-title'>永恒圣帝</text>
-                  <text class='book-desc'>这座这座这座这座这座这座这座这座这座这座这座这座这座这座这座这座这座这座...</text>
-                  <view class='book-info'>
-                    <view class='book-rq'>
-                      作者 | <text>1.9万</text>人气
-                    </view>
-                    <view class='book-tags'>
-                      <view class='book-tag'>玄幻</view>
-                      <view class='book-tag'>玄幻</view>
-                    </view>                  
+            <view class='category-title'>{{key}}</view>
+            <view bindtap='gotoDetail' data-id='{{item._id}}' wx:if="{{lists[map[category]].length>0}}" class='book-item' wx:for="{{lists[map[category]]}}" wx:key="item._id   ">
+                  <image src="{{item.cover}}"></image>
+                  <view class='book-detail'>
+                    <view class='book-title-top'>
+                        <text class='book-title'>{{item.title}}</text>
+                        <view class='book-state finish'>完结</view>
+                      </view>
+                      <text class='book-desc'>{{item.shortIntro}}</text>
+                      <view class='book-info'>
+                        <view class='book-rq'>
+                          {{item.author}} | <text>{{item.retentionRatio}}万</text>人气
+                        </view>
+                        <view class='book-tags'>
+                          <view class='book-tag'>{{item.minorCate}}</view>
+                        </view>                  
+                      </view>
                   </view>
-              </view>
-            </view>
-            <view class='book-item'>
-              <image src="https://i.zhulang.com/book_cover/image/51/61/516164_x160.jpg"></image>
-              <view class='book-detail'>
-                  <text class='book-title'>永恒圣帝</text>
-                  <text class='book-desc'>这座这座这座这座这座这座这座这座这座这座这座这座这座这座这座这座这座这座...</text>
-                  <view class='book-info'>
-                    <view class='book-rq'>
-                      作者 | <text>1.9万</text>人气
-                    </view>
-                    <view class='book-tags'>
-                      <view class='book-tag'>玄幻</view>
-                      <view class='book-tag'>玄幻</view>
-                    </view>                  
-                  </view>
-              </view>
-            </view>
-            <view class='book-item'>
-              <image src="https://i.zhulang.com/book_cover/image/51/61/516164_x160.jpg"></image>
-              <view class='book-detail'>
-                  <text class='book-title'>永恒圣帝</text>
-                  <text class='book-desc'>这座这座这座这座这座这座这座这座这座这座这座这座这座这座这座这座这座这座...</text>
-                  <view class='book-info'>
-                    <view class='book-rq'>
-                      作者 | <text>1.9万</text>人气
-                    </view>
-                    <view class='book-tags'>
-                      <view class='book-tag'>玄幻</view>
-                      <view class='book-tag'>玄幻</view>
-                    </view>                  
-                  </view>
-              </view>
-            </view>
-            <view class='book-item'>
-              <image src="https://i.zhulang.com/book_cover/image/51/61/516164_x160.jpg"></image>
-              <view class='book-detail'>
-                  <text class='book-title'>永恒圣帝</text>
-                  <text class='book-desc'>这座这座这座这座这座这座这座这座这座这座这座这座这座这座这座这座这座这座...</text>
-                  <view class='book-info'>
-                    <view class='book-rq'>
-                      作者 | <text>1.9万</text>人气
-                    </view>
-                    <view class='book-tags'>
-                      <view class='book-tag'>玄幻</view>
-                      <view class='book-tag'>玄幻</view>
-                    </view>                  
-                  </view>
-              </view>
             </view>
         </view>
       </view>

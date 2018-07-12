@@ -14,7 +14,7 @@ Page({
       let self=this;
       fetch.get(`api/book-info/${id}`,{},false).then((data) => {
           self.setData({
-          book: data
+            book: data
           })
           callback == null ? function(){}:callback();
       }).catch((err) => {

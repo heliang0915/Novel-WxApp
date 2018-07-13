@@ -4,7 +4,7 @@
   color: #000;
 }
 .book-info-wrap{
-  /* display: flex; */
+  margin-bottom: 80rpx;
 }
 .book-top{
   display: flex;
@@ -30,6 +30,10 @@
     width: 28rpx;
     height: 28rpx;
     margin: 0 5rpx;
+}
+.book-look .star{
+    width: 34rpx;
+    height: 34rpx;
 }
 .book-info-wrap .book-info .stars{
   display: flex;
@@ -92,4 +96,140 @@
   font-size: 26rpx;
   margin: 34rpx auto;  
   border-radius: 8rpx;
+}
+.book-toolbar-bottom{
+   background: #FFF; 
+  position: fixed;
+  bottom: 0;
+  border-top: 1px solid #eee;
+   width: 100%; 
+  
+}
+.book-toolbar-bottom-inner{
+  display: flex;
+  justify-content: space-between;
+  margin:20rpx 60rpx;
+}
+
+.book-btn{
+  font-size: 30rpx;
+  background:#409EFF;
+  padding: 16rpx 80rpx;
+  border-radius: 40rpx;
+  color: #FFF;
+}
+.btn-line{
+  background:#FFF;
+  border: 1px solid #409EFF;
+  color: #409EFF;
+}
+.book-desc,.book-short-msg,.book-recommend{
+  border-bottom: 1px solid #eee;
+  padding:30rpx 25rpx ;
+}
+.book-short-msg,.book-recommend{
+  border-bottom-width:0 !important;
+}
+.h3{
+  font-size: 30rpx;
+}
+.h3::before{
+  content: '';
+  display: inline-block;
+  width: 6rpx;
+  height: 30rpx;
+  background: red;
+  margin-right: 16rpx;
+}
+.p{
+  margin-top: 20rpx;
+  font-size: 27rpx;
+  line-height: 50rpx;
+  text-indent: 2em;
+}
+/*热门短评*/
+.book-short-msg-inner{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.book-short-msg-inner .book-btn{
+   padding:6rpx 20rpx;
+   font-size: 24rpx;
+}
+.book-short-msg-inner .book-btn image{
+  display: inline-block;
+  height: 20rpx;
+  width: 20rpx;
+  margin-right:0;
+}
+.book-short-list{
+}
+.book-short-info{
+  margin: 20rpx 0 34rpx;
+}
+.book-short-info .user-phone{
+  display: flex;
+  align-items: center;
+}
+.user-phone image{
+  width: 66rpx;
+  height: 66rpx;
+  border-radius: 50%;
+  margin-right: 20rpx;
+}
+.user-phone .stars{
+  display: flex;
+}
+ .user-phone .stars view{
+    width: 22rpx;
+    height: 22rpx;
+ }
+.user-phone .star{
+   width: 22rpx;
+   height: 22rpx;
+}
+.book-short-info .short-msg{
+  padding:30rpx 20rpx 10rpx 100rpx;
+  font-size: 26rpx;
+  color: #999;
+  line-height: 46rpx;
+}
+/*点赞 */
+.short-zan{
+  display: flex;
+  justify-content: space-between;
+   margin-top: 10rpx; 
+}
+.short-zan .zan-count{
+  display: flex;
+  align-items: center;
+}
+.short-zan .zan-count image{
+  width: 30rpx;
+  height: 30rpx;
+  margin-left: 10rpx;
+  margin-right:0rpx;
+}
+
+/*相关推荐*/
+.recomment-books{
+  display: flex;
+  flex-wrap: wrap;
+   justify-content: space-between;   
+  margin:40rpx 0; 
+}
+.recomment-book-item{
+   display: flex;
+   flex-direction: column;
+   justify-content: center;  
+}
+.recomment-book-item text{
+  text-align: center;  
+  display: inline-block;
+  margin: 10rpx 0 20rpx;
+
+}
+.recomment-book-item image{
+  margin-right: 0px;
 }

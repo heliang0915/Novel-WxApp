@@ -1,60 +1,52 @@
 <!--detail.wxml-->
-
-    <view>{{book.author}}</view>
-     <view>{{book.cover}}</view>
-     <view>{{book.longIntro}}</view>
-     <view>{{book.title}}</view>
-     <view>{{book.majorCate}}</view>
-     <view>{{book.minorCate}}</view>
-     <view>{{book.rating.score}}</view>
-     <view>{{book.rating.score}}</view>
-     <view>{{book.rating.score}}</view>
-
 <view class='detail-wrap'>
     <view class='book-info-wrap'>
+      <!--书籍信息  -->
       <view class='book-top'>
-           <image src="../../images/cover.jpg"></image>
+           <image src="{{book.cover}}"></image>
        <view class='book-info'>
-          <text class='book-name'>修罗大地</text>
+          <text class='book-name'>{{book.title}}</text>
           <view class='stars'>
-              <text>8.8</text>
+              <text>{{book.rating.score}}</text>
                <view wx:for="{{golds}}" wx:key="{{item}}">
                 <image class="star" src="{{item>starId?empty_star:full_star}}"></image>
               </view>
               <view class='book-split'>|</view>
-              <view>4.4万人评</view>
+              <view>{{book.rating.count}}人评</view>
           </view>
           <view class="book-author">
-            <text class='outer'>实验小白鼠</text>
+            <text class='outer'>{{book.author}}</text>
             <text class='book-split'>|</text>
-            <text>东方不败</text>
+            <text>{{book.cat}}</text>
           </view>
           <view class="book-update">
-            <text>100万字</text>
+            <text>{{book.wordCount}}字</text>
             <text class='book-split'>|</text>
             <text>3小时前更新</text>
           </view>
-          <text>书币/千字</text>
+          <text>5书币/千字</text>
        </view>
       </view>
+      <!--书籍表现 -->
       <view class='book-score'>
         <view>
           <text>追书人气</text>
-          <text>1111</text>
+          <text>{{book.latelyFollower}}</text>
         </view>
         <view>
             <text>读者留存</text>
-            <text>1111</text>
+            <text>{{book.retentionRatio}}%</text>
         </view>
         <view>
             <text>社区帖子</text>
-          <text>1111</text>
+          <text>{{book.postCount}}</text>
         </view>
         <view>
           <text>日更字数</text>
-          <text>1111</text>
+          <text>{{book.serializeWordCount}}</text>
         </view>
       </view>
+      <!--看过 -->
       <view class="book-look">
         <view class='book-look-inner'>
           看过  
@@ -64,5 +56,64 @@
         </view>
          
       </view>
+      <!--简介  -->
+      <view class='book-desc'>
+          <view class='h3'>简介</view>
+          <view class='p'>
+               {{book.longIntro}}
+          </view>
+      </view>
+      <!--短评  -->
+      <view class='book-short-msg'>
+        <view class='book-short-msg-inner'>
+            <view class='h3'>热门短评</view>
+            <view class='book-btn btn-line'>
+                <image src="../../images/pen.png"></image> 写短评
+            </view>
+        </view>
+        <view class='book-short-list'>
+        <!-- 一条短评  -->
+        <view class='book-short-info' wx:key="item" wx:for="{{[1,2,3,4,5]}}">
+          <view class='user-phone'>
+            <image src="{{book.cover}}"></image>
+            <view>
+                <text>{{book.title}}</text>
+                  <view class='stars'>
+                    <view wx:for="{{golds}}" wx:key="{{item}}">
+                      <image class="star" src="{{item>starId?empty_star:full_star}}"></image>
+                    </view>
+                </view>
+            </view>
+          </view>
+          <view class='short-msg'>
+              <view class='short-msg-detail'>{{book.longIntro}}</view>
+              <view class='short-zan'>
+                <text>1小时前</text>
+                <view class='zan-count'>
+                  <text>111</text>
+                  <image src="../../images/zan.png"></image>
+                </view>
+              </view>
+          </view>
+        </view>
+         </view>
+      </view>
+      <!--相关推荐-->
+      <view class='book-recommend'>
+        <view class='h3'>相关推荐</view>
+        <view class='recomment-books'>
+          <view class='recomment-book-item' wx:key="key" wx:for="{{[1,2,3,4,5,6]}}">
+              <image src="{{book.cover}}"></image>
+              <text>{{book.title}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+    <!--加入书架 开始阅读漂浮  -->
+    <view class='book-toolbar-bottom'>
+       <view class='book-toolbar-bottom-inner'>
+        <view class='book-btn btn-line'>加入书架</view>
+          <view class='book-btn '>开始阅读</view>
+       </view>
     </view>
 </view>

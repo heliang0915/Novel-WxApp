@@ -60,7 +60,7 @@ Page({
     let dataset = event.currentTarget.dataset;
     let {id}=dataset;
     wx.navigateTo({
-      url: `/pages/book/book-detail?id=${id}`,
+      url: `/pages/book/detail?id=${id}`,
       success:function(){
         console.log("跳转成功");
       },

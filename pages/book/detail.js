@@ -9,7 +9,8 @@ Page({
     full_star: '../../images/full-star.png',
     starId:0,
     id: 0,
-    book: {}
+    book: {},
+    comments:[]
   },
   onShareAppMessage: function () {
   },
@@ -25,8 +26,13 @@ Page({
     let { id } = this.data;
     let self = this;
     fetch.get(`api/book-info/${id}`, {}, false).then((data) => {
+      data.rating.score=Math.ceil(data.rating.score/2)+'.0';
+      data.rating.count=data.rating.count>10000?(data.rating.count/10000).toFixed(2)+'万':data.rating.count;
+      data.wordCount=data.wordCount>10000?(data.wordCount/10000).toFixed(1)+'万':data.wordCount;
+      console.log(data);
       self.setData({
-        book: data
+        book: data,
+        starId: data.rating.score
       })
       callback == null ? function () { } : callback();
     }).catch((err) => {
@@ -36,7 +42,23 @@ Page({
   },
   //获取书籍评论
   getBookComments() {
-
+    let { id } = this.data;
+    let self = this;
+    fetch.get(`api/post/review/by-book?book=${id}&sort=updated&start=0&limit=10`,{}, false).then((data) => {
+      // console.log(data);
+      let imageServer ="http://statics.zhuishushenqi.com";
+      data.reviews.forEach((item)=>{
+        let temp = item.author.activityAvatar;
+        let temp2 = item.author.avatar;
+        item.author.activityAvatar = `${imageServer}${temp}`;
+        item.author.avatar = `${imageServer}${temp2}`;
+      })
+      self.setData({
+        comments: data
+      })
+    }).catch((err) => {
+      console.log(err);
+    })
   },
   onLoad: function (options) {
     let { id } = options;
@@ -44,6 +66,6 @@ Page({
       id
     })
     this.getBookDetail();
-    this.setData({ starId: 3 })
+    this.getBookComments();
   }
 })

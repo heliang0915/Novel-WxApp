@@ -2,9 +2,12 @@
   margin:22rpx 0;
   font-size: 24rpx;
   color: #000;
+  overflow: hidden;
+  width: 100%;
 }
 .book-info-wrap{
   margin-bottom: 80rpx;
+  /* background: red; */
 }
 .book-top{
   display: flex;

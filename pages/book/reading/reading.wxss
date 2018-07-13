@@ -1,0 +1,9 @@
+.reading-wrap{
+  /* margin:22rpx 0; */
+  font-size: 24rpx;
+  color: #000;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  background: #F2EBD9;
+}

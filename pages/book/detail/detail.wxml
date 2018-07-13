@@ -22,7 +22,7 @@
           <view class="book-update">
             <text>{{book.wordCount}}字</text>
             <text class='book-split'>|</text>
-            <text>3小时前更新</text>
+            <text>{{book.updated}}更新</text>
           </view>
           <text>5书币/千字</text>
        </view>
@@ -89,7 +89,7 @@
           <view class='short-msg'>
               <view class='short-msg-detail'>{{item.content}}</view>
               <view class='short-zan'>
-                <text>1小时前</text>
+                <text>{{item.created}}</text>
                 <view class='zan-count'>
                   <text>{{item.commentCount}}</text>
                   <image src="../../images/zan.png"></image>
@@ -103,9 +103,9 @@
       <view class='book-recommend'>
         <view class='h3'>相关推荐</view>
         <view class='recomment-books'>
-          <view class='recomment-book-item' wx:key="key" wx:for="{{[1,2,3,4,5,6]}}">
-              <image src="{{book.cover}}"></image>
-              <text>{{book.title}}</text>
+          <view class='recomment-book-item' bindtap='gotoDetail' data-id='{{item._id}}' wx:key="item" wx:for="{{recommends}}">
+              <image src="{{item.cover}}"></image>
+              <text>{{item.title}}</text>
           </view>
         </view>
       </view>
@@ -114,7 +114,7 @@
     <view class='book-toolbar-bottom'>
        <view class='book-toolbar-bottom-inner'>
         <view class='book-btn btn-line'>加入书架</view>
-          <view class='book-btn '>开始阅读</view>
+          <view bindtap='goToReading' data-id='{{book._id}}' class='book-btn '>开始阅读</view>
        </view>
     </view>
 </view>

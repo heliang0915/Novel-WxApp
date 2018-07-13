@@ -233,3 +233,7 @@
 .recomment-book-item image{
   margin-right: 0px;
 }
+.comment-title{
+  display: block;
+  font-size: 26rpx;
+}

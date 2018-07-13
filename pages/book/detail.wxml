@@ -73,24 +73,25 @@
         </view>
         <view class='book-short-list'>
         <!-- 一条短评  -->
-        <view class='book-short-info' wx:key="item" wx:for="{{[1,2,3,4,5]}}">
+        <view class='book-short-info' wx:key="item" wx:for="{{comments}}">
           <view class='user-phone'>
-            <image src="{{book.cover}}"></image>
+            <image src="{{item.author.avatar}}"></image>
             <view>
-                <text>{{book.title}}</text>
+                <text>{{item.author.nickname}}</text>
+                <text class='comment-title'>{{item.title}}</text>
                   <view class='stars'>
-                    <view wx:for="{{golds}}" wx:key="{{item}}">
-                      <image class="star" src="{{item>starId?empty_star:full_star}}"></image>
+                    <view wx:for="{{golds}}" wx:key="{{gold}}" wx:for-item="gold">
+                      <image class="star" src="{{(gold>item.rating)?empty_star:full_star}}"></image>
                     </view>
                 </view>
             </view>
           </view>
           <view class='short-msg'>
-              <view class='short-msg-detail'>{{book.longIntro}}</view>
+              <view class='short-msg-detail'>{{item.content}}</view>
               <view class='short-zan'>
                 <text>1小时前</text>
                 <view class='zan-count'>
-                  <text>111</text>
+                  <text>{{item.commentCount}}</text>
                   <image src="../../images/zan.png"></image>
                 </view>
               </view>

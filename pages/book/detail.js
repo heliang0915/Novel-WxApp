@@ -2,6 +2,7 @@
 //获取应用实例
 let  app = getApp()
 let fetch=require("../../utils/fetch.js");
+let config = require("../../config.js");
 Page({
   data: {
     golds: [1,2,3,4,5], //分数
@@ -44,9 +45,9 @@ Page({
   getBookComments() {
     let { id } = this.data;
     let self = this;
-    fetch.get(`api/post/review/by-book?book=${id}&sort=updated&start=0&limit=10`,{}, false).then((data) => {
+    fetch.get(`api/post/review/by-book?book=${id}&sort=created&start=0&limit=10`,{}, false).then((data) => {
       // console.log(data);
-      let imageServer ="http://statics.zhuishushenqi.com";
+      let imageServer = config.imageServer;//"http://statics.zhuishushenqi.com";
       data.reviews.forEach((item)=>{
         let temp = item.author.activityAvatar;
         let temp2 = item.author.avatar;
@@ -54,7 +55,7 @@ Page({
         item.author.avatar = `${imageServer}${temp2}`;
       })
       self.setData({
-        comments: data
+        comments: data.reviews
       })
     }).catch((err) => {
       console.log(err);

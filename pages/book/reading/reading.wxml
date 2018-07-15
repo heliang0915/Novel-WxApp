@@ -1,9 +1,52 @@
 <!--reading.wxml-->
-<view class='reading-wrap'>
-    阅读页面{{id}}阅读页面阅读页面阅读页面阅读页面阅读页面阅读页面阅读页面阅读页面阅读页面阅读页面
-    阅读页面{{id}}阅读页面阅读页面阅读页面阅读页面阅读页面阅读页面阅读页面阅读页面阅读页面阅读页面
-    阅读页面{{id}}阅读页面阅读页面阅读页面阅读页面阅读页面阅读页面阅读页面阅读页面阅读页面阅读页面
-    阅读页面{{id}}阅读页面阅读页面阅读页面阅读页面阅读页面阅读页面阅读页面阅读页面阅读页面阅读页面
-    阅读页面{{id}}阅读页面阅读页面阅读页面阅读页面阅读页面阅读页面阅读页面阅读页面阅读页面阅读页面
-    
+<scroll-view scroll-y class='reading-wrap' scroll-top="{{scrollTop}}" catchtap='showToolbar' style='height:{{windowHeight}}px;font-size:{{curFont}}rpx;background-color:{{curBg}};color:{{fontColor}};'>
+   <view class='chapter-title'>{{chapter.title}}</view>
+   <!-- <slider left-icon="cancel" min="20" max="40" value="{{curFont}}" right-icon="success_no_circle" bindchange="changeFontSizeSilder" step="2"/> -->
+   <view class='chapter-content' >
+      <view class='chapter-content-item' wx:key="item" wx:for="{{chapter.cpContentAry}}">
+         {{item}}
+      </view>
+   </view>
+   <!--toolbar  -->
+   <!-- <slider left-icon="cancel" right-icon="success_no_circle" bindchange="changeFontSizeSilder" step="5"/> -->
+   <view class='reading-toolbar' style='transform:translateY({{showtoolbar==true?"0%":"150%"}})'>
+      <view class='toolbar-font-size'>  
+           <view data-dir='reduce' >小</view> 
+          <!-- <view class='progress-bar'>
+             <view class='precent' style="width:{{w}}%"></view>
+          </view>  -->
+           <view class='progress-bar'>
+          <slider left-icon="cancel" min="30" max="60" value="{{curFont}}" right-icon="success_no_circle"  bindchange="changeFontSizeSilder" step="2" style='width:100%;'/>
+          </view>
+        <view data-dir='add' >大</view>
+      </view>
+      <view class='toolbar-bg-color' catchtap='changeBg'>
+        <view id='default' style="color:{{activeId=='default'?'red':'#FFF'}};border-color:{{activeId=='default'?'red':''}}">默认</view>
+        <view id='moon' style="color:{{activeId=='moon'?'red':'#FFF'}};border-color:{{activeId=='moon'?'red':''}}">夜间</view>
+        <view id='eye' style="color:{{activeId=='eye'?'red':'#FFF'}};border-color:{{activeId=='eye'?'red':''}}">护眼</view>
+      </view>
+      <view class='toolbar-page'>
+        <view  catchtap='prePage'>上一章</view>
+        <view catchtap='gotoCatalog' data-id='{{id}}' data-title='{{title}}'>目录</view>
+        <view catchtap='nextPage'>下一章</view>
+      </view>
+   </view>
+</scroll-view>
+ <!-- 目录-->
+<view class='catalog-wrap' style='transform:translateX({{showcatalog==true?"0%":"-100%"}})'>
+    <view class='catalog-book-name'>
+       {{title}}
+    </view>
+    <view class='catalog-name'>
+      <view>目录</view>
+      <view>排序</view>
+    </view>
+    <scroll-view scroll-y touchmove="catalogMove"   style='height:{{windowHeight-60}}px;' class='catalog-list' >
+      <view wx:for="{{chapters}}"  wx:for-index="index" catchtap='gotoPage' data-indx="{{index}}"  data-id='{{id}}'data-title="{{title}}" data-link="{{item.link}}"  wx:key="item" class='chapter-item'>
+       <view style="color:{{chapterIndex==index?'red':'#666'}}">
+           {{item.title}}
+       </view> 
+       <view style='white-space:nowrap;' class="{{item.isVip==true?'pay':'free'}}" >{{item.isVip==true?"付费":"免费"}}</view>
+      </view>
+    </scroll-view>
 </view>

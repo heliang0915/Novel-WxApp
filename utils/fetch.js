@@ -39,6 +39,7 @@ function isLogin(){
       isShow?wx.showLoading({
         title: '加载中'
       }):null;
+
       wx.showNavigationBarLoading();
       return new Promise((resolve,reject)=>{
         isLogin().then((isLogin) => {
@@ -64,9 +65,9 @@ function isLogin(){
 
               resolve(res.data);
               wx.hideNavigationBarLoading() //完成停止加载
-              setTimeout(() => {
+              // setTimeout(() => {
                 isShow ? wx.hideLoading() : null;
-              }, 500)
+              // }, 2000)
 
             },
             fail: function (error) {

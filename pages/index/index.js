@@ -58,9 +58,9 @@ Page({
   //事件处理函数
   gotoDetail: function (event) {
     let dataset = event.currentTarget.dataset;
-    let {id}=dataset;
+    let {id,title}=dataset;
     wx.navigateTo({
-      url: `/pages/book/detail/detail?id=${id}`,
+      url: `/pages/book/detail/detail?id=${id}&title=${title}`,
       success:function(){
         console.log("跳转成功");
       },
@@ -71,7 +71,7 @@ Page({
   },
   getHotList: function (page, callback, type, major){
     let self=this;
-    fetch.get("api/category-info?gender=male&type=hot&major=" + major+"&minor=&start=0&limit=5",    {
+    fetch.get("api/category-info?gender=male&type=hot&major=" + encodeURIComponent(major)+"&minor=&start=0&limit=5",    {
       page: page==null?1:page,
       params: {}
     },false).then((data) => {

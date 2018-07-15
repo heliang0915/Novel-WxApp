@@ -31,7 +31,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 3,
+			"current": 1,
 			"list": [
 				{
 					"id": -1,
@@ -52,10 +52,16 @@
 					"query": "id=53115e30173bfacb4904897e"
 				},
 				{
-					"id": -1,
-					"name": "书籍详情",
+					"id": 3,
+					"name": "阅读页面",
 					"pathName": "pages/book/reading/reading",
-					"query": "id=5aa8e1cd9bb8d27a1af3b5dc"
+					"query": "id=56a75bf2b5d32bd50d61879f&&title=哈哈哈"
+				},
+				{
+					"id": 4,
+					"name": "目录",
+					"pathName": "pages/book/catalog/catalog",
+					"query": "id=56a75bf2b5d32bd50d61879f"
 				}
 			]
 		}

@@ -1,9 +1,132 @@
 .reading-wrap{
-  /* margin:22rpx 0; */
-  font-size: 24rpx;
   color: #000;
   overflow: hidden;
+   height: 100%; 
+  
+  width: auto;
+  font-size: 38rpx;
+  transition: background-color .5s ease;
+}
+.reading-wrap .chapter-title{
+   font-weight: bold;
+   text-indent: 0em;
+   margin-bottom: 20rpx;
+   padding:30rpx;
+}
+.reading-wrap .chapter-content{
+   padding:0rpx 30rpx 30rpx 30rpx;
+}
+.reading-wrap .chapter-content-item{
+   text-indent: 2em;
+   line-height: 2;
+}
+.reading-toolbar{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+   width:100%; 
+  background: rgba(0,0,0,.8);
+  color: #FFF;
+  padding:30rpx 0 20rpx;
+  font-size: 26rpx;
+   transform: translateY(150%);
+   transition: all .5s ease;
+}
+.reading-toolbar >view{
+  display: flex;
+  justify-content: space-between;
+  margin:14rpx 40rpx;
+  align-items: center;
+}
+.reading-toolbar >view> view{
+   border: 1px solid #666;
+   padding:12rpx 36rpx;
+   border-radius: 6rpx;
+   margin-bottom: 20rpx;
+  
+}
+.toolbar-font-size{
+  /* margin:14rpx 20rpx !important; */
+}
+.toolbar-font-size view:nth-child(odd){
+   padding:12rpx 26rpx !important;
+}
+ 
+ .progress-bar{
+   flex: 1;
+   margin:0 0rpx 22rpx !important; 
+   /* height: 6rpx;   
+   border-radius: 120rpx !important;  */
+    padding: 0 !important; 
+   /* overflow: hidden; */
+   position: relative;
+   display: flex;
+   border-width: 0 !important;
+    align-items: center !important;  
+  
+ }
+ .progress-bar .precent{
+    width: 10%; 
+    height: 100%; 
+    padding:0;
+    margin: 0;
+    background: red;
+	  position: absolute;
+    left: 0;
+    top:0;
+    border:0px solid red;
+    border-radius: 0rpx !important; 
+     transition: all .2s ease-in-out;
+ }
+.toolbar-bg-color view,.toolbar-page view{
+   flex:1;
+   text-align: center;
+   margin-right:60rpx;
+}
+
+.toolbar-bg-color view:last-child,.toolbar-page view:last-child{
+  margin-right:0rpx;
+}
+
+
+/*目录 */
+.catalog-wrap{
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #FFF;
   width: 100%;
   height: 100%;
-  background: #F2EBD9;
+  overflow: auto;
+  transform: translateX(-100%);
+  transition: all .5s ease;
+  z-index: 2;
+}
+.catalog-book-name{
+  padding: 10rpx 30rpx;
+}
+.catalog-name{
+  display: flex;
+  justify-content: space-between;
+  padding: 10rpx 30rpx;
+  font-size: 32rpx;
+}
+.catalog-list{
+  border: 1px solid #eee;
+  border-left-width: 0;
+  border-right-width: 0;
+  color: #666;
+}
+.chapter-item{
+   border-bottom: 1px solid #eee;
+   padding: 20rpx 30rpx;
+   font-size: 30rpx;
+   display: flex;
+   justify-content: space-between;
+}
+.free{
+   color:green;
+}
+.pay{
+ color:red;
 }

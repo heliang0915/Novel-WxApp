@@ -10,6 +10,8 @@ let unit = 100/(maxFontSize - minFontSize);
 
 Page({
   data: {
+      pageAry: [], //目录分页
+      index:0,
       id:'',
       title:'',
       chapterIndex:0, //章节索引
@@ -30,6 +32,29 @@ Page({
   },
   onShareAppMessage: function () {
   },
+  bindPickerChange: function (e) {
+    // console.log('picker发送选择改变，携带值为', e.detail.value)
+    let { sources, sourceSel } = this.data;
+    let { value}=e.detail;
+    this.setData({
+      index: value
+    })
+    let page = parseInt(value)+1;
+    this.getBookChapters(sources[0], sourceSel, page);
+  },
+  //获取分页信息
+  getCatalogPages(){
+    let { sources}=this.data;
+    console.log(sources[0]);
+    let { _id } = sources[0];
+    let self=this;
+    fetch.get(`wx/chapterPages/${_id}`, true).then((data) => {
+      self.setData({
+        pageAry: data
+      })
+
+    })
+  },
   onReachBottom:function(){
   },
   onPullDownRefresh:function(){
@@ -45,7 +70,7 @@ Page({
     this.setData({
       curFont: value
     })
-    console.log(`发生change事件，携带值为`, e.detail.value)
+    // console.log(`发生change事件，携带值为`, e.detail.value)
   },
   // 改变背景
   changeBg(event){
@@ -90,22 +115,22 @@ Page({
       self.setData({
         sources:data
       })
-      
-      console.log(sources);
       self.getBookChapters(sources[0], sourceSel);
+      self.getCatalogPages();
       // console.log(books)
     })
   },
   //获取章节list
-  getBookChapters: function (source, index) {
+  getBookChapters: function (source, index,page) {
     let { id,link } = this.data;
+    page=page==null?1:page;
     this.setData({
       chapters :[],
       sourceSel:index
     })
     let { _id } =source
     let self = this;
-    fetch.get(`api/book-chapters/${_id}`,true).then((data) => {
+    fetch.get(`api/book-chapters/${_id}?page=${page}`,true).then((data) => {
       let chapters = data.chapters;
       this.setData({
         chapters
@@ -118,6 +143,7 @@ Page({
       self.getBookContent();
     })
   },
+  //获取内容
   getBookContent: function (callback) {
     let self = this;
     let {link}=this.data;
@@ -238,10 +264,8 @@ Page({
     let w = (curFont - minFontSize)*unit;
     let windowHeight=0;
     let self=this;
-
-
-    console.log("w::::"+w);
-    console.log("unit::::" + unit);
+    // console.log("w::::"+w);
+    // console.log("unit::::" + unit);
     wx.setNavigationBarTitle({
       title
     })

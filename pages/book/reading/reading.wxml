@@ -39,7 +39,13 @@
     </view>
     <view class='catalog-name'>
       <view>目录</view>
-      <view>排序</view>
+      <view>
+        <picker bindchange="bindPickerChange" value="{{index}}" range="{{pageAry}}">
+            <view class="picker">
+              当前选择：{{pageAry[index]}}
+            </view>
+          </picker>
+      </view>
     </view>
     <scroll-view scroll-y touchmove="catalogMove"   style='height:{{windowHeight-60}}px;' class='catalog-list' >
       <view wx:for="{{chapters}}"  wx:for-index="index" catchtap='gotoPage' data-indx="{{index}}"  data-id='{{id}}'data-title="{{title}}" data-link="{{item.link}}"  wx:key="item" class='chapter-item'>

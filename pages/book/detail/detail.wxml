@@ -68,7 +68,7 @@
         <view class='book-short-msg-inner'>
             <view class='h3'>热门短评</view>
             <view class='book-btn btn-line'>
-                <image src="../../images/pen.png"></image> 写短评
+                <image src="../../../images/pen.png"></image> 写短评
             </view>
         </view>
         <view class='book-short-list'>
@@ -92,7 +92,7 @@
                 <text>{{item.created}}</text>
                 <view class='zan-count'>
                   <text>{{item.commentCount}}</text>
-                  <image src="../../images/zan.png"></image>
+                  <image src="../../../images/zan.png"></image>
                 </view>
               </view>
           </view>

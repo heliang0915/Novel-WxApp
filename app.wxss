@@ -111,3 +111,8 @@
 .center{
   margin-top: 400rpx;
 }
+
+.navigator-hover {
+  background-color:transparent;
+  opacity: 0.9;
+}

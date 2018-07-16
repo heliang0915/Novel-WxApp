@@ -58,8 +58,7 @@ Page({
     }
    
     wx.setNavigationBarTitle({
-      title:"我的"
+      title:"个人中心"
     })
-    console.log(userInfo);
   }
 })

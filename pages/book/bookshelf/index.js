@@ -2,7 +2,7 @@
 //获取应用实例
 let  app = getApp()
 
-let fetch=require("../../utils/fetch.js");
+let fetch=require("../../../utils/fetch.js");
 Page({
   data: {
     banners:[
@@ -146,5 +146,8 @@ Page({
   },
   onLoad: function () {
     // this.getBlogList(1);
+    wx.setNavigationBarTitle({
+      title: "书架"
+    })
   }
 })

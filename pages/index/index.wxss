@@ -32,14 +32,14 @@ swiper-item .image-banner{
    display: flex;
    justify-content: space-between;
 }
-.book-nav-inner view{
+.book-nav-inner navigator{
   margin:0 10rpx;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-.book-nav-inner view image{
+.book-nav-inner navigator image{
   width: 92rpx;
   height: 92rpx;
   border-radius: 50%;

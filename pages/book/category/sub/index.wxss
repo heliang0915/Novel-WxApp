@@ -1,0 +1,4 @@
+/**index.wxss**/
+.container{
+  background: #F1F1F1;
+}

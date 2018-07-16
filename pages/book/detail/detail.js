@@ -107,7 +107,11 @@ Page({
     });
   },
   onLoad: function (options) {
-    let { id } = options;
+    let { id, title } = options;
+
+    wx.setNavigationBarTitle({
+      title
+    })
     this.setData({
       id
     })

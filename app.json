@@ -2,9 +2,11 @@
   "pages": [
     "pages/index/index",
     "pages/me/me",
-    "pages/bookshelf/index",
+    "pages/book/bookshelf/index",
     "pages/book/detail/detail",
     "pages/book/reading/reading",
+    "pages/book/category/index/index",
+    "pages/book/category/sub/index",
     "pages/login/index"
   ],
   "window": {
@@ -23,7 +25,7 @@
     "backgroundColor": "#ffffff",
     "list": [
       {
-        "pagePath": "pages/bookshelf/index",
+        "pagePath": "pages/book/bookshelf/index",
         "iconPath": "images/book-shelf.png",
         "selectedIconPath": "images/book-shelf-active.png",
         "text": "书架"

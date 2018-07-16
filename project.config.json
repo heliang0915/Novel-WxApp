@@ -62,6 +62,12 @@
 					"name": "目录",
 					"pathName": "pages/book/catalog/catalog",
 					"query": "id=56a75bf2b5d32bd50d61879f"
+				},
+				{
+					"id": -1,
+					"name": "分类",
+					"pathName": "pages/book/category/index/index",
+					"query": ""
 				}
 			]
 		}

@@ -1,0 +1,30 @@
+<!--分类1级-->
+<view class="category-wrap">
+  <view class='category-left'>
+        <view class='active'>
+           <view>男生</view>
+        </view>
+        <view>
+           <view>女生</view>
+        </view>
+    </view>
+    <scroll-view scroll-y class='category-right'>
+      <view class='category-group'>
+        <view class='hr'></view>
+        <view class='category-title'>男生</view>
+        <view class='category-list'>
+           <view class='category-item' wx:key="item" wx:for="[1,2]">
+             <view class='sub-name'>
+               <text>玄幻</text>
+               <view>51111本</view>
+             </view> 
+             <view class='book-pics'>
+                <image src="../../../../images/book-city-active.png"></image>
+                <image src="../../../../images/book-city.png"></image>
+                <image src="../../../../images/book-city-active.png"></image>
+             </view> 
+          </view>
+        </view>
+      </view>
+    </scroll-view>
+</view>

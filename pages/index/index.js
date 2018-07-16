@@ -52,8 +52,14 @@ Page({
   //上拉刷新
   onPullDownRefresh:function(){
     console.log("onPullDownRefresh....");
-    this.initList();
     wx.hideNavigationBarLoading() //完成停止加载
+    setTimeout(()=>{
+      this.initList();
+    },1000)
+    // setTimeout(()=>{
+    //   wx.hideNavigationBarLoading() //完成停止加载
+    // },100);
+   
   },
   //事件处理函数
   gotoDetail: function (event) {
@@ -106,5 +112,8 @@ Page({
   },
   onLoad: function () {
     this.initList();
+    wx.setNavigationBarTitle({
+      title:"书库"
+    })
   }
 })

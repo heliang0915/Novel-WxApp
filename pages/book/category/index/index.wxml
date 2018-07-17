@@ -8,20 +8,20 @@
            <view>女生</view>
         </view>
     </view>
-    <scroll-view scroll-y class='category-right'>
-      <view class='category-group'>
+    <scroll-view scroll-y  class='category-right' style='height:{{screenHeight-65}}px'>
+     
+      <view class='category-group' wx:key="key" wx:for-index="key" wx:for-item="cats" wx:for="{{category}}">
         <view class='hr'></view>
-        <view class='category-title'>男生</view>
+        <view class='category-title'>{{map[key]}}</view>
         <view class='category-list'>
-           <view class='category-item' wx:key="item" wx:for="[1,2,]">
+           <view class='category-item'  style="padding-left:{{padding}}rpx;padding-right:{{padding}}rpx;" wx:key="item"  wx:for="{{cats}}">
              <view class='sub-name'>
-               <text>玄幻</text>
-               <view>51111本</view>
+               <text>{{item.name}}</text>
+               <view>{{item.bookCount}}本</view>
              </view> 
              <view class='book-pics'>
-                <image src="../../../../images/book-city-active.png"></image>
-                <image src="../../../../images/book-city.png"></image>
-                <image src="../../../../images/book-city-active.png"></image>
+                <image wx:for="{{item.bookCover}}"  wx:for-item="cover"  src="{{cover}}"></image>
+                 
              </view> 
           </view>
         </view>

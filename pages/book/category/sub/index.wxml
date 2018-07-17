@@ -1,4 +1,36 @@
-<!--分类1级-->
-<view class="container">
-    分类2级
+<!--分类2级-->
+<view class="sub-category">
+    <view class='sub-search'>
+       <view class='sub-top-condition'>
+          <view class='active'>热门</view>
+          <view>新书</view>
+          <view>好评</view>
+          <view>完结</view>
+          <view>VIP</view>
+       </view>
+       <view class='sub-top-condition'>
+          <view class='active'>全部</view>
+          <view>东方玄幻</view>
+          <view>异界大陆</view>
+          <view>异界争霸</view>
+          <view>远古神话</view>
+       </view>
+    </view>
+    <view class='book-list'>
+    <!--每一项  -->
+      <view class='book-item' wx:for="{{[1,2]}}">
+         <image src="/../../../../images/cover.jpg"></image>
+         <view class='book-info'>
+            <view class='book-title'>圣墟</view>
+            <view class='book-desc'>圣墟圣墟圣墟圣墟圣墟圣墟圣墟圣墟圣墟圣墟圣墟圣墟圣墟圣墟圣墟圣墟圣</view>
+            <view class='book-data'>
+                <view><text>11111</text>人气</view>
+                <view><text>111</text>留存</view>
+            </view>
+         </view>
+      </view>
+
+
+    </view>
+
 </view>

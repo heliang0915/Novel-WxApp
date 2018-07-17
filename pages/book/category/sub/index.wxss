@@ -1,4 +1,62 @@
 /**index.wxss**/
-.container{
-  background: #F1F1F1;
+.sub-category{
+   font-size: 24rpx;
+   padding:0 28rpx;
+}
+.sub-search{
+  margin-top: 30rpx;
+}
+.sub-top-condition{
+  display: flex;
+  border-bottom: 1px solid #f7f7f7;
+  padding:6rpx 0;
+  color: #86868a;
+}
+.sub-top-condition view{
+   padding: 6rpx 10rpx;
+   margin: 18rpx 10rpx;
+   border-radius: 20rpx ;
+   font-size: 26rpx;
+}
+.sub-top-condition view.active{
+  color: red;
+  border: 1px solid red;
+}
+
+.book-list{
+  padding: 10rpx 0;
+}
+.book-item{
+  display: flex;
+  margin: 10rpx 0 38rpx;
+}
+.book-item image{
+  /* flex: 1; */
+  width: 180rpx;
+  height: 220rpx;
+  margin-right: 25rpx;
+  border-radius: 6rpx;
+}
+.book-item .book-info{
+  flex: 3;
+}
+.book-item .book-title{
+    font-size: 32rpx;
+    margin-top: 10rpx;
+}
+.book-item .book-desc{
+  font-size: 28rpx;
+  line-height: 1.8;
+  color: #838383;
+  margin: 20rpx 0;
+}
+.book-item .book-data{
+  display: flex;
+  justify-content: space-between;
+  color: #838383;
+  margin-top: 20rpx;
+  font-size: 26rpx;
+}
+.book-item .book-data text{
+  color: #c93b45;
 }

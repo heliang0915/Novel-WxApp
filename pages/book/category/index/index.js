@@ -8,6 +8,7 @@ Page({
     pixelRatio:2,
     screenHeight:100,
     category: {},
+    scrollTop: 0,
     map: {
       male: "男生",
       female: "女生"
@@ -20,6 +21,20 @@ Page({
   onPullDownRefresh:function(){
     console.log("onPullDownRefresh....");
     wx.hideNavigationBarLoading() //完成停止加载
+  },
+  //
+  goToMetail(event){
+    let dataset = event.currentTarget.dataset;
+    let { id } = dataset;
+    let scrollTop=0;
+    if (id =="femail"){
+        scrollTop=1200;  
+      }else{
+        scrollTop = 0;  
+      }
+      this.setData({
+        scrollTop
+      })
   },
   getCategoriesList: function (page, callback, type, major) {
     let self = this;
@@ -66,7 +81,7 @@ Page({
         let { pixelRatio, screenHeight}=res;
         sefl.setData({
           pixelRatio,
-          padding: pixelRatio==2?30:34,
+          padding: pixelRatio==2?12:20,
           screenHeight
         })
       }

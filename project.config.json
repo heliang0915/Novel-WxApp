@@ -31,7 +31,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 5,
+			"current": 6,
 			"list": [
 				{
 					"id": -1,
@@ -68,6 +68,12 @@
 					"name": "分类",
 					"pathName": "pages/book/category/index/index",
 					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "二级分类",
+					"pathName": "pages/book/category/sub/index",
+					"query": "title=哈哈哈"
 				}
 			]
 		}

@@ -13,7 +13,7 @@
         <view class='hr'></view>
         <view class='category-title'>男生</view>
         <view class='category-list'>
-           <view class='category-item' wx:key="item" wx:for="[1,2]">
+           <view class='category-item' wx:key="item" wx:for="[1,2,]">
              <view class='sub-name'>
                <text>玄幻</text>
                <view>51111本</view>

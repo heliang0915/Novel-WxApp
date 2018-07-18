@@ -116,7 +116,7 @@ Page({
         sources:data
       })
       self.getBookChapters(sources[0], sourceSel);
-      self.getCatalogPages();
+     
       // console.log(books)
     })
   },
@@ -141,6 +141,7 @@ Page({
         })
       }
       self.getBookContent();
+      self.getCatalogPages();
     })
   },
   //获取内容
@@ -264,8 +265,7 @@ Page({
     let w = (curFont - minFontSize)*unit;
     let windowHeight=0;
     let self=this;
-    // console.log("w::::"+w);
-    // console.log("unit::::" + unit);
+   
     wx.setNavigationBarTitle({
       title
     })
@@ -284,7 +284,7 @@ Page({
       }
     })
     link=link == null ? '' : link;
-    console.log(link);
+    // console.log(link);
     //获取设备信息
     wx.getSystemInfo({
       success: function (res) {

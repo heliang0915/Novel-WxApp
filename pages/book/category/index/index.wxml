@@ -15,7 +15,7 @@
         <view class='category-list'>
 
           <view class='category-item'  style="padding-left:{{padding}}rpx;padding-right:{{padding}}rpx;" wx:key="item"  wx:for="{{cats}}">
-                  <navigator url="/pages/book/category/sub/index?title={{item.name}}">
+                  <navigator url="/pages/book/category/sub/index?title={{item.name}}&gender={{scrollTop==0?'male':'female'}}">
                   
                       <view class='sub-name'>
                         <text>{{item.name}}</text>

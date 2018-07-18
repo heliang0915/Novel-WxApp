@@ -135,24 +135,7 @@ swiper-item .image-banner{
   border: 1px solid #007a01 !important;
   background: #007a01 !important;
 }
-.book-loadding {
-  display: flex;
-  width: 100%;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center; 
-  padding-top: 30px;
-}
-.book-loadding  image{
-  width: 50rpx;
-  height: 50rpx;
-}
-.book-loadding view{
-  color: #999;
-  width:100px;
-  text-align: center; 
-  margin-top: 20rpx;
-}
+
 
 .book-rq text{
     color: red;

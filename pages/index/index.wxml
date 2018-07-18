@@ -16,7 +16,7 @@
             <text>分类</text>
           </navigator>
       <!-- </view> -->
-       <navigator>
+       <navigator url="/pages/book/rank/index">
           <image src="../../images/rank.png"></image>
           <text>排行</text>
       </navigator>

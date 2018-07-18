@@ -27,7 +27,7 @@ Page({
   getBookDetail() {
     let { id } = this.data;
     let self = this;
-    fetch.get(`api/book-info/${id}`, {}, false).then((data) => {
+    fetch.get(`api/book-info/${id}`, false).then((data) => {
       data.rating.score=Math.ceil(data.rating.score/2)+'.0';
       data.rating.count=data.rating.count>10000?(data.rating.count/10000).toFixed(2)+'万':data.rating.count;
       data.wordCount=data.wordCount>10000?(data.wordCount/10000).toFixed(1)+'万':data.wordCount;

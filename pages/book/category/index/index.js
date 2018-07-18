@@ -39,7 +39,6 @@ Page({
   getCategoriesList: function (page, callback, type, major) {
     let self = this;
     fetch.get("api/categories",true).then((data) => {
-      console.log(data);
       delete data['ok'];
       delete data['picture'];
       delete data['press'];
@@ -58,7 +57,6 @@ Page({
             let newAry=[];
             bookCover.forEach((cover) => {
               cover = decodeURIComponent(cover.replace('/agent/', ''));
-              console.log(cover);
               newAry.push(cover);
             })
             item.bookCover = newAry;

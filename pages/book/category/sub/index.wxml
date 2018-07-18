@@ -2,30 +2,33 @@
 <view class="sub-category">
     <view class='sub-search'>
        <view class='sub-top-condition'>
-          <view class='active'>热门</view>
-          <view>新书</view>
-          <view>好评</view>
-          <view>完结</view>
-          <view>VIP</view>
+          <block wx:for="{{con1}}" wx:key="item" wx:for-item="obj" class='{{item==type?"active":""}}'>
+              <view wx:for="{{obj}}" wx:key="key"  bindtap='changeCondation' data-type="{{key}}" class="{{key==type?'active':''}}" wx:for-index="key" wx:for-item="val">
+                    {{val}}
+              </view>
+          </block>
        </view>
        <view class='sub-top-condition'>
-          <view class='active'>全部</view>
-          <view>东方玄幻</view>
-          <view>异界大陆</view>
-          <view>异界争霸</view>
-          <view>远古神话</view>
+          <view wx:key="item" wx:key="item"  wx:for='{{mins}}' bindtap='changeCondation' data-min="{{item}}" class='{{item==minor?"active":""}}'>
+              {{item==''?'全部':item}}
+          </view>
        </view>
     </view>
+
+    <view class='book-loadding'  wx:if="{{loaded==false}}">
+       <image src="../../../../images/loadding.gif"></image>
+        <view>数据加载中...</view>  
+     </view>
     <view class='book-list'>
-    <!--每一项  -->
-      <view class='book-item' wx:for="{{[1,2,3,4,5,6,7]}}">
-         <image src="/../../../../images/cover.jpg"></image>
+    <!-- 每一项 -->
+      <view class='book-item'  wx:key="item" wx:if="{{loaded==true}}" bindtap='gotoDetail'   data-id='{{item._id}}' data-title="{{item.title}}" wx:for="{{bookList}}">
+         <image src="{{item.cover}}"></image>
          <view class='book-info'>
-            <view class='book-title'>圣墟</view>
-            <view class='book-desc'>圣墟圣墟圣墟圣墟圣墟圣墟圣墟圣墟圣墟圣墟圣墟圣墟圣墟圣墟圣墟圣墟圣</view>
+            <view class='book-title'>{{item.title}}</view>
+            <view class='book-desc'>{{item.shortIntro}}</view>
             <view class='book-data'>
-                <view><text>11111</text>人气</view>
-                <view><text>111</text>留存</view>
+                <view><text>{{item.latelyFollower}}</text>人气</view>
+                <view><text>{{item.retentionRatio}}</text>留存</view>
             </view>
          </view>
       </view>

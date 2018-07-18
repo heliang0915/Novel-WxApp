@@ -18,7 +18,7 @@
     </view>
     <view class='book-list'>
     <!--每一项  -->
-      <view class='book-item' wx:for="{{[1,2]}}">
+      <view class='book-item' wx:for="{{[1,2,3,4,5,6,7]}}">
          <image src="/../../../../images/cover.jpg"></image>
          <view class='book-info'>
             <view class='book-title'>圣墟</view>
@@ -29,8 +29,5 @@
             </view>
          </view>
       </view>
-
-
     </view>
-
 </view>

@@ -28,12 +28,12 @@
 }
 .book-item{
   display: flex;
-  margin: 10rpx 0 38rpx;
+  margin: 10rpx 0 24rpx;
 }
 .book-item image{
   /* flex: 1; */
   width: 180rpx;
-  height: 220rpx;
+  height: 230rpx;
   margin-right: 25rpx;
   border-radius: 6rpx;
 }
@@ -56,6 +56,15 @@
   color: #838383;
   margin-top: 20rpx;
   font-size: 26rpx;
+  
+}
+.book-item .book-data view{
+  padding-left:30rpx;
+  /* background: red; */
+}
+.book-item .book-data view:nth-last-child(1){
+  margin-right: 100rpx;
+  margin-left: 0;
 }
 .book-item .book-data text{
   color: #c93b45;

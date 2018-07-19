@@ -65,6 +65,8 @@ Page({
       let {books}=data;
       books.forEach((item)=>{
           let cover=item.cover;
+          let shortIntro = item.shortIntro;
+          item.shortIntro=shortIntro.length > 30 ? shortIntro.substr(0, 30) + '...' : shortIntro
           cover = decodeURIComponent(cover.replace('/agent/', ''));
           item.cover =cover;
       })

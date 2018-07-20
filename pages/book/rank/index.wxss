@@ -1,0 +1,53 @@
+ .rank-wrap{
+  
+} 
+.category-top{
+  display: flex;
+  justify-content:space-between;
+  font-size: 28rpx;
+  padding:0 200rpx;
+  border-bottom: 1px solid #f1f1f1;
+}
+.category-top view{
+   padding:30rpx 20rpx 0;
+}
+.category-top view.active{
+  /* position: relative; */
+  /* top: 10rpx; */
+  padding-bottom: 12rpx; 
+  border-bottom: 2px solid red;
+}
+.category-center{
+  display: flex;
+}
+
+.rank-wrap .category-left{
+  flex:1.5;
+}
+.book-list {
+  border-left: 1px solid #f1f1f1;
+  width: 75%;
+  padding: 10rpx 20rpx;
+}
+
+.book-item image{
+  width: 150rpx;
+  height:202rpx;
+}
+.book-item .book-title {
+  font-size:30rpx;
+  margin-top:10rpx;
+}
+
+.book-item .book-desc {
+  font-size:26rpx;
+  line-height:1.5;
+  color:#838383;
+  margin:20rpx 0;
+}
+.book-item .book-data view {
+ padding-left:0;
+}
+.book-loadding{
+ padding-top:50%;
+}

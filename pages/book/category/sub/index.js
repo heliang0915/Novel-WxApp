@@ -45,7 +45,7 @@ Page({
           break;
         }
       }
-      
+      mins=mins.slice(0,5);
       self.setData({
         mins
       })
@@ -57,7 +57,8 @@ Page({
     let { title, type, gender, minor}=this.data;
     let major = title;
     let self=this;
-    let url=`api/category-info?gender=${gender}&type=${type}&major=${major}&minor=${minor}&start=0&limit=20`
+    let url=`api/category-info?gender=${gender}&type=${type}&major=${major}&minor=${minor}&start=0&limit=20`;
+    url=encodeURI(url);
     this.setData({
       loaded:false
     })

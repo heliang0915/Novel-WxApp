@@ -22,7 +22,7 @@
     <view class='book-list'>
     <!-- 每一项 -->
       <view class='book-item'  wx:key="item" wx:if="{{loaded==true}}" bindtap='gotoDetail'   data-id='{{item._id}}' data-title="{{item.title}}" wx:for="{{bookList}}">
-         <image src="{{item.cover}}"></image>
+         <image lazy-load="true" src="{{item.cover}}"></image>
          <view class='book-info'>
             <view class='book-title'>{{item.title}}</view>
             <view class='book-desc'>{{item.shortIntro}}</view>

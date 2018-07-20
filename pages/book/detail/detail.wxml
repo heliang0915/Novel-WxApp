@@ -3,7 +3,7 @@
     <view class='book-info-wrap'>
       <!--书籍信息  -->
       <view class='book-top'>
-           <image src="{{book.cover}}"></image>
+           <image lazy-load="true" src="{{book.cover}}"></image>
        <view class='book-info'>
           <text class='book-name'>{{book.title}}</text>
           <view class='stars'>
@@ -75,7 +75,7 @@
         <!-- 一条短评  -->
         <view class='book-short-info' wx:key="item" wx:for="{{comments}}">
           <view class='user-phone'>
-            <image src="{{item.author.avatar}}"></image>
+            <image lazy-load="true" src="{{item.author.avatar}}"></image>
             <view>
                 <text>{{item.author.nickname}}</text>
                 <text class='comment-title'>{{item.title}}</text>

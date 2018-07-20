@@ -8,6 +8,12 @@ let { maxFontSize, minFontSize } = config.toolbar.fontSize;
 //单位量
 let unit = 100/(maxFontSize - minFontSize);
 
+var time = 0;
+var touchDot = 0;//触摸时的原点
+var touchPageY=0;
+var interval = "";
+var flag_hd = true;
+
 Page({
   data: {
       pageAry: [], //目录分页
@@ -30,6 +36,64 @@ Page({
       showtoolbar:false,
       showcatalog: false
   },
+
+  // onShow: function () {
+  //   flag_hd = true;    //重新进入页面之后，可以再次执行滑动切换页面代码
+  //   clearInterval(interval); // 清除setInterval
+  //   time = 0;
+  // },
+  // // 触摸开始事件
+  // touchStart: function (e) {
+  //   touchDot = e.touches[0].pageX; // 获取触摸时的原点
+  //   touchPageY=e.touches[0].pageY;
+
+  //   // 使用js计时器记录时间    
+  //   interval = setInterval(function () {
+  //     time++;
+  //   }, 100);
+  // },
+  // // 触摸结束事件
+  // touchEnd: function (e) {
+  //   let self=this;
+  //   var touchMove = e.changedTouches[0].pageX;
+  //   var touchMoveY = e.changedTouches[0].pageX;
+  //   let {scrollTop}=this.data;
+  //   let diff=touchMoveY-touchPageY;
+  //   let absDiff=Math.abs(diff);
+  //   console.log("diff:::::::::"+diff);
+  //   let addTop=diff>0?(scrollTop-absDiff<=0?0:scrollTop-absDiff):(scrollTop+absDiff);
+
+  //   console.log(addTop);
+
+
+
+  //   // 向左滑动
+  //   if (touchMove - touchDot <= -100 && time < 10 && flag_hd == true) {
+  //     // flag_hd = false;
+  //     //执行切换页面的方法
+  //     console.log("向右滑动");
+  //     wx.showToast({
+  //       title: '向右滑动',
+  //       icon: 'none',
+  //       duration: 2000
+  //     })
+  //     self.nextPage()
+  //   }
+  //   // 向右滑动   
+  //   if (touchMove - touchDot >= 100 && time < 10 && flag_hd == true) {
+  //     // flag_hd = false;
+  //     //执行切换页面的方法
+  //     console.log("向左滑动");
+  //     wx.showToast({
+  //       title: '向左滑动',
+  //       icon: 'none',
+  //       duration: 2000
+  //     })
+  //     self.prePage()
+  //   }
+  //   clearInterval(interval); // 清除setInterval
+  //   time = 0;
+  // },
   onShareAppMessage: function () {
   },
   bindPickerChange: function (e) {
@@ -235,9 +299,11 @@ Page({
 
    
     this.getBookContent(()=>{
-      self.setData({
-        scrollTop: 0
-      })
+      setTimeout(()=>{
+        self.setData({
+          scrollTop: 0
+        })
+      },100)
     });
     // this.goToReading(link, chapterIndex);
   },

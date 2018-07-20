@@ -22,7 +22,7 @@
                         <view>{{item.bookCount}}本</view>
                       </view> 
                       <view class='book-pics'>
-                          <image wx:for="{{item.bookCover}}" wx:key="item" wx:for-item="cover"  src="{{cover}}"></image>
+                          <image lazy-load="true" wx:for="{{item.bookCover}}" wx:key="item" wx:for-item="cover"  src="{{cover}}"></image>
                       </view> 
                   
                   </navigator>

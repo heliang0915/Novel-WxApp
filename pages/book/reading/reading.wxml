@@ -1,5 +1,5 @@
 <!--reading.wxml-->
-<scroll-view scroll-y class='reading-wrap' scroll-top="{{scrollTop}}" catchtap='showToolbar' style='height:{{windowHeight}}px;font-size:{{curFont}}rpx;background-color:{{curBg}};color:{{fontColor}};'>
+<scroll-view scroll-y   class='reading-wrap' scroll-top="{{scrollTop}}" catchtap='showToolbar' style='height:{{windowHeight}}px;font-size:{{curFont}}rpx;background-color:{{curBg}};color:{{fontColor}};'>
    <view class='chapter-title'>{{chapter.title}}</view>
    <!-- <slider left-icon="cancel" min="20" max="40" value="{{curFont}}" right-icon="success_no_circle" bindchange="changeFontSizeSilder" step="2"/> -->
    <view class='chapter-content' >
@@ -7,6 +7,11 @@
          {{item}}
       </view>
    </view>
+    <view class='chapter-btns'>
+        <view class='chapter-btn' catchtap='prePage'>上一章</view>
+        <view class='chapter-btn' catchtap='nextPage'>下一章</view>
+    </view>
+   
    <!--toolbar  -->
    <!-- <slider left-icon="cancel" right-icon="success_no_circle" bindchange="changeFontSizeSilder" step="5"/> -->
    <view class='reading-toolbar' style='transform:translateY({{showtoolbar==true?"0%":"150%"}})'>
@@ -55,4 +60,6 @@
        <view style='white-space:nowrap;' class="{{item.isVip==true?'pay':'free'}}" >{{item.isVip==true?"付费":"免费"}}</view>
       </view>
     </scroll-view>
+   
+
 </view>

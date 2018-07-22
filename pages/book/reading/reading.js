@@ -8,16 +8,16 @@ let { maxFontSize, minFontSize } = config.toolbar.fontSize;
 //单位量
 let unit = 100/(maxFontSize - minFontSize);
 
-var time = 0;
-var touchDot = 0;//触摸时的原点
-var touchPageY=0;
-var interval = "";
-var flag_hd = true;
+// var time = 0;
+// var touchDot = 0;//触摸时的原点
+// var touchPageY=0;
+// var interval = "";
+// var flag_hd = true;
 
 Page({
   data: {
       pageAry: [], //目录分页
-      index:0,
+      index:0, //当前页数
       id:'',
       title:'',
       chapterIndex:0, //章节索引
@@ -96,23 +96,32 @@ Page({
   // },
   onShareAppMessage: function () {
   },
-  bindPickerChange: function (e) {
+  bindPickerChange: function (e,index,callback) {
     // console.log('picker发送选择改变，携带值为', e.detail.value)
     let { sources, sourceSel } = this.data;
-    let { value}=e.detail;
+    let value=null;
+    if (e){
+      value = e.detail.value;
+    }
+    // let { value}=e.detail;
+    if(index!=null){
+      value=index;
+    }
     this.setData({
       index: value
     })
     let page = parseInt(value)+1;
-    this.getBookChapters(sources[0], sourceSel, page);
+    this.getBookChapters(sources[0], sourceSel, page, callback);
+    
   },
   //获取分页信息
-  getCatalogPages(){
+  getCatalogPages(isShow){
     let { sources}=this.data;
+    let isLoading=isShow==null?true:false;
     console.log(sources[0]);
     let { _id } = sources[0];
     let self=this;
-    fetch.get(`wx/chapterPages/${_id}`, true).then((data) => {
+    fetch.get(`wx/chapterPages/${_id}`, isLoading).then((data) => {
       self.setData({
         pageAry: data
       })
@@ -171,21 +180,25 @@ Page({
     })
   },
   //获取书源
-  getBookSource: function () {
+  getBookSource: function (isShow) {
+    let isLoading=true;
+    if (isShow!=null){
+      isLoading = isShow;
+    }
     let self=this;
     let { id, sourceSel } = this.data;
-    fetch.get(`api/book-sources?view=summary&book=${id}`, true).then((data) => {
+    fetch.get(`api/book-sources?view=summary&book=${id}`, isLoading).then((data) => {
       let sources = data;
       self.setData({
         sources:data
       })
-      self.getBookChapters(sources[0], sourceSel);
+      self.getBookChapters(sources[0], sourceSel,1,()=>{});
      
       // console.log(books)
     })
   },
   //获取章节list
-  getBookChapters: function (source, index,page) {
+  getBookChapters: function (source, index,page,callback) {
     let { id,link } = this.data;
     page=page==null?1:page;
     this.setData({
@@ -194,7 +207,7 @@ Page({
     })
     let { _id } =source
     let self = this;
-    fetch.get(`api/book-chapters/${_id}?page=${page}`,true).then((data) => {
+    fetch.get(`api/book-chapters/${_id}?page=${page}`, callback == null ? true:false).then((data) => {
       let chapters = data.chapters;
       this.setData({
         chapters
@@ -205,7 +218,8 @@ Page({
         })
       }
       self.getBookContent();
-      self.getCatalogPages();
+      self.getCatalogPages(false);
+      callback == null ? function () { } : callback();
     })
   },
   //获取内容
@@ -253,50 +267,92 @@ Page({
     })
   },
   prePage(){
-    let { chapterIndex, chapters } = this.data;
+    let self = this;
+    let { chapterIndex, chapters, index } = this.data;
+    let isOver=false; //是否要翻页
     if (chapterIndex < 1) {
-      wx.showToast({
-        title: '已经是第一章了',
-        icon: 'none',
-        duration: 2000
-      })
-      return;
+        if(index<=0){
+          wx.showToast({
+            title: '已经是第一章了',
+            icon: 'none',
+            duration: 2000
+          })
+          return;
+        }else{
+          index--;
+          isOver=true;
+          chapterIndex=100;
+          self.setData({
+            index
+          })
+        }
     }
     chapterIndex--;
-    this.gotoPage(null,chapterIndex);
+    // chapterIndex = parseInt(chapterIndex) + (index) * 100;
+    if (isOver){
+      this.bindPickerChange(null, index, () => {
+        setTimeout(() => {
+          self.gotoPage(null, chapterIndex);
+        }, 100)
+      });
+    }else{
+      self.gotoPage(null, chapterIndex);
+    }
   },
   nextPage() {
-    let { chapterIndex, chapters } = this.data;
+    let self=this;
+    let isOver = false; //是否要翻页
+    let { chapterIndex, chapters, pageAry, index} = this.data;
     if (chapterIndex >= chapters.length - 1) {
-      wx.showToast({
-        title: '已经是最后一章了',
-        icon: 'none',
-        duration: 2000
-      })
-      return;
+      if (index >= pageAry.length) {
+        wx.showToast({
+          title: '已经是最后一章了',
+          icon: 'none',
+          duration: 2000
+        })
+        return;
+
+      }else{
+        index++;
+        isOver=true;
+        chapterIndex=-1;
+        self.setData({
+          index
+        })
+      }
+
     }
     chapterIndex++;
-    this.gotoPage(null,chapterIndex);
+    if (isOver) {
+      this.bindPickerChange(null, index, () => {
+        self.gotoPage(null, chapterIndex);
+      });
+    }else{
+      self.gotoPage(null, chapterIndex);
+    }
   },
   // 根据索引去指定章节
-  gotoPage(event,chapterIndex){
+  gotoPage(event, chapterIndex){
     let self = this;
+    let {index}=this.data;
     if (event){
       let dataset = event.currentTarget.dataset;
       let { indx} = dataset;
       chapterIndex = indx;
    }
+    // chapterIndex=parseInt(chapterIndex)+(index)*100;
     console.log("chapterIndex:::" + chapterIndex);
+
     let { chapters}=this.data;
-    let chapter= chapters[chapterIndex];
+    let chapter = chapters[chapterIndex];
     let { link } = chapter;
     this.setData({
       link,
       showtoolbar: false,
       showcatalog: false,
-      chapterIndex
+      chapterIndex,
+      index
     })
-
    
     this.getBookContent(()=>{
       setTimeout(()=>{
@@ -362,7 +418,7 @@ Page({
           chapterIndex: indx == null ? 0 : indx,
           windowHeight: res.windowHeight
         })
-        self.getBookSource();
+        self.getBookSource(false);
       }
     })
   }

@@ -1,8 +1,8 @@
 <!--reading.wxml-->
-<scroll-view scroll-y   class='reading-wrap' scroll-top="{{scrollTop}}" catchtap='showToolbar' style='height:{{windowHeight}}px;font-size:{{curFont}}rpx;background-color:{{curBg}};color:{{fontColor}};'>
-   <view class='chapter-title'>{{chapter.title}}</view>
+<scroll-view scroll-y   class='reading-wrap' scroll-top="{{scrollTop}}" catchtap='showToolbar' style='height:{{windowHeight}}px;background-color:{{curBg}};color:{{fontColor}};'>
+   <view class='chapter-title' style='font-size:{{curFont}}rpx;'>{{chapter.title}}</view>
    <!-- <slider left-icon="cancel" min="20" max="40" value="{{curFont}}" right-icon="success_no_circle" bindchange="changeFontSizeSilder" step="2"/> -->
-   <view class='chapter-content' >
+   <view class='chapter-content' style='font-size:{{curFont}}rpx;' >
       <view class='chapter-content-item' wx:key="item" wx:for="{{chapter.cpContentAry}}">
          {{item}}
       </view>

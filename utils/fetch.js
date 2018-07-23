@@ -42,12 +42,18 @@ function isLogin(){
 
       wx.showNavigationBarLoading();
       return new Promise((resolve,reject)=>{
-        isLogin().then((isLogin) => {
+        isLogin().then((res) => {
+          let isLogin = res.data;
+          if (url.indexOf('/login') > -1 || url.indexOf('/exist') > -1 || url.indexOf('/wxRegister') > -1 ){
+              isLogin=true;
+          }
           if (!isLogin){
+            setTimeout(() => {
               wx.navigateTo({
-                url: '../login/index',
+                url: '/pages/login/index',
               })
-             return;
+            },100);
+            //  return;
           }
           wx.request({
             url: url,

@@ -31,7 +31,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 3,
+			"current": 8,
 			"list": [
 				{
 					"id": -1,
@@ -79,6 +79,12 @@
 					"id": 7,
 					"name": "排行",
 					"pathName": "pages/book/rank/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "完本",
+					"pathName": "pages/book/finish/index",
 					"query": ""
 				}
 			]

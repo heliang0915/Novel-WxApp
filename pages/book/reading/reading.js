@@ -137,7 +137,7 @@ Page({
   catalogMove(event){
 
   },
-  changeFontSizeSilder(e){
+  changeFontSieSilder(e){
     let {value} = e.detail;
     console.log(value);
     this.setData({

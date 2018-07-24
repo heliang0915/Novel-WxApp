@@ -36,18 +36,18 @@ Page({
   },
   //分享
   onShareAppMessage: function () {
-    return {
-      title: '程序记录点滴',
-      desc: '找伙伴一起来参与吧',
-      imageUrl:'https://www.pimage.top/b050266a249e81fb0c2cbd1a554ae4bf?w=1500&h=330&q=100',
-      path: '/pages/index/index',
-      success: (res)=>{
-        console.log("转发成功....");
-      },
-      fail:(res)=>{
-        console.log("转发失败....");
-      }
-    }
+    // return {
+    //   title: '程序记录点滴',
+    //   desc: '找伙伴一起来参与吧',
+    //   imageUrl:'https://www.pimage.top/b050266a249e81fb0c2cbd1a554ae4bf?w=1500&h=330&q=100',
+    //   path: '/pages/index/index',
+    //   success: (res)=>{
+    //     console.log("转发成功....");
+    //   },
+    //   fail:(res)=>{
+    //     console.log("转发失败....");
+    //   }
+    // }
   },
   //上拉刷新
   onPullDownRefresh:function(){
@@ -106,6 +106,7 @@ Page({
             self.setData({
                 loaded:true
             })
+          counter=0;
         }
       }, null, categorys[key]);
     }

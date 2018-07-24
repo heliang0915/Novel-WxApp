@@ -23,6 +23,22 @@ Page({
     wx.stopPullDownRefresh() //停止下拉刷新
   },
 
+  //获取章节list
+  getBookChapters: function (source, index, page) {
+    let { _id } = source
+    fetch.get(`api/book-chapters/${_id}?page=1`, false).then((data) => { })
+  },
+  //获取书源
+  getBookSource: function () {
+    let self = this;
+    let { id } = this.data;
+    fetch.get(`api/book-sources?view=summary&book=${id}`, false).then((data) => {
+      let sources = data;
+      self.getBookChapters(sources[0], 0, 1, () => { });
+    })
+  },
+
+
   //获取书籍详情
   getBookDetail() {
     let { id } = this.data;
@@ -36,6 +52,10 @@ Page({
         book: data,
         starId: data.rating.score
       })
+      setTimeout(()=>{
+        //预加载一下书源信息
+        self.getBookSource();
+      },100)
     }).catch((err) => {
       console.log(err);
     })

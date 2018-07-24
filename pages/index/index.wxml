@@ -20,11 +20,11 @@
           <image src="../../images/rank.png"></image>
           <text>排行</text>
       </navigator>
-        <navigator>
+        <navigator url="/pages/book/finish/index">
           <image src="../../images/finish.png"></image>
-          <text>书单</text>
+          <text>完本</text>
       </navigator>
-       <navigator>
+       <navigator url="/pages/book/free/index">
           <image src="../../images/free.png"></image>
           <text>免费</text>
       </navigator>
@@ -37,7 +37,6 @@
        <image src="../../images/loadding.gif"></image>
         <view>数据加载中...</view>  
      </view>
-
       <view class='book-list' wx:if="{{loaded==true}}" wx:key="{{key}}" wx:for-item="category" wx:for-index="key"  wx:for="{{categorys}}">
         <view class='book-list-inner'>
             <view class='category-title-index'>{{key}}</view>

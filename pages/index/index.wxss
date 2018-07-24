@@ -16,11 +16,11 @@ swiper-item .image-banner{
   width: 100% !important;
   height: 100% !important;
 }
-.search-view{
+/* .search-view{
   margin: 10px;
    position: relative; 
   display: flex;
-}
+} */
 .book-city-top{
   width: 100%;
   background: #FFF;
@@ -51,23 +51,9 @@ swiper-item .image-banner{
 }
 .book-list-inner{
   margin: 10rpx 30rpx;
-  padding-bottom: 30rpx;
-}
-.category-title-index{
-  font-size:28rpx;
-  margin: 32rpx 0 -8rpx;
+  padding-bottom: 0;
 }
 
-.category-title-index::before{
-  content:'';
-  display: inline-block;
-  width:8rpx;
-  height:28rpx;
-  background:red;
-  position: relative;
-  top:4rpx;
-  margin-right: 12rpx;
-}
 .book-item{
   display: flex;
   margin-top: 32rpx;
@@ -101,6 +87,7 @@ swiper-item .image-banner{
   font-size:28rpx;
   min-height: 150rpx;
   line-height: 48rpx;
+  margin:0;
   /* text-indent: 2em; */
 }
 .book-detail .book-info{
@@ -108,6 +95,7 @@ swiper-item .image-banner{
   justify-content: space-between;
   width: 100%;
   font-size:26rpx;
+  padding-bottom:10rpx;
 }
 .book-detail  .book-tags{
   display: flex;
@@ -135,7 +123,9 @@ swiper-item .image-banner{
   border: 1px solid #007a01 !important;
   background: #007a01 !important;
 }
-
+.book-list{
+  padding: 0;
+}
 
 .book-rq text{
     color: red;

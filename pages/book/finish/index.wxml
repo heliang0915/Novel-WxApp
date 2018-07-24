@@ -1,0 +1,24 @@
+<!--pages/book/finish/index.wxml-->
+<view>
+    <view class='book-loadding'  wx:if="{{loaded==false}}">
+      <image src="/images/loadding.gif"></image>
+        <view>数据加载中...</view>  
+    </view>
+      <view class='book-list' >
+          <view class='book-list-inner' wx:if="{{loaded==true}}" wx:key="{{key}}" wx:for-item="category" wx:for-index="key"  wx:for="{{categorys}}">
+            <view class='category-title-index' >{{key}}</view>
+            <!-- 每一项 -->
+              <view class='book-item'  wx:key="item" wx:if="{{loaded==true}}" bindtap='gotoDetail'   data-id='{{item._id}}' data-title="{{item.title}}" wx:for="{{lists[map[category]]}}">
+                <image lazy-load="true" src="{{item.cover}}"></image>
+                <view class='book-info'>
+                    <view class='book-title'>{{item.title}}</view>
+                    <view class='book-desc'>{{item.shortIntro}}</view>
+                    <view class='book-data'>
+                        <view><text>{{item.latelyFollower}}</text>人气</view>
+                        <view><text>{{item.retentionRatio}}</text>留存</view>
+                    </view>
+                </view>
+        </view>
+      </view>
+    </view>
+</view>

@@ -331,6 +331,14 @@ Page({
       self.gotoPage(null, chapterIndex);
     }
   },
+  changeFontSizeSilder(e) {
+    let { value } = e.detail;
+    console.log(value);
+    this.setData({
+      curFont: value
+    })
+    // console.log(`发生change事件，携带值为`, e.detail.value)
+  },
   // 根据索引去指定章节
   gotoPage(event, chapterIndex){
     let self = this;

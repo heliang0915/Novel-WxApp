@@ -312,3 +312,20 @@
 .book-item .book-data text{
   color: #c93b45;
 }
+
+.category-title-index{
+  font-size:28rpx;
+  margin: 32rpx 0 -8rpx;
+}
+
+.category-title-index::before{
+  content:'';
+  display: inline-block;
+  width:8rpx;
+  height:28rpx;
+  background:red;
+  position: relative;
+  top:4rpx;
+  margin-right: 12rpx;
+}
+

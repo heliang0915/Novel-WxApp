@@ -8,6 +8,8 @@
     "pages/book/reading/reading",
     "pages/book/category/index/index",
     "pages/book/category/sub/index",
+    "pages/book/finish/index",
+    "pages/book/free/index",
     "pages/login/index"
   ],
   "window": {

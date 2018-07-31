@@ -47,7 +47,7 @@ Page({
   //   touchDot = e.touches[0].pageX; // 获取触摸时的原点
   //   touchPageY=e.touches[0].pageY;
 
-  //   // 使用js计时器记录时间    
+  //   // 使用js计时器记录时间
   //   interval = setInterval(function () {
   //     time++;
   //   }, 100);
@@ -79,7 +79,7 @@ Page({
   //     })
   //     self.nextPage()
   //   }
-  //   // 向右滑动   
+  //   // 向右滑动
   //   if (touchMove - touchDot >= 100 && time < 10 && flag_hd == true) {
   //     // flag_hd = false;
   //     //执行切换页面的方法
@@ -112,13 +112,12 @@ Page({
     })
     let page = parseInt(value)+1;
     this.getBookChapters(sources[0], sourceSel, page, callback);
-    
+
   },
   //获取分页信息
   getCatalogPages(isShow){
     let { sources}=this.data;
     let isLoading=isShow==null?true:false;
-    console.log(sources[0]);
     let { _id } = sources[0];
     let self=this;
     fetch.get(`wx/chapterPages/${_id}`, isLoading).then((data) => {
@@ -193,7 +192,7 @@ Page({
         sources:data
       })
       self.getBookChapters(sources[0], sourceSel,1,()=>{});
-     
+
       // console.log(books)
     })
   },
@@ -242,7 +241,7 @@ Page({
       callback == null ? function () {} : callback();
     })
   },
-  
+
   showToolbar(){
     let {showtoolbar}=this.data;
     this.setData({
@@ -350,18 +349,24 @@ Page({
    }
     // chapterIndex=parseInt(chapterIndex)+(index)*100;
     console.log("chapterIndex:::" + chapterIndex);
-
     let { chapters}=this.data;
-    let chapter = chapters[chapterIndex];
-    let { link } = chapter;
+    if(chapters.length){
+      let chapter = chapters[chapterIndex];
+      let { link } = chapter;
+      this.setData({
+        link
+      });
+    }
+    // let chapter = chapters[chapterIndex];
+    // let { link } = chapter;
     this.setData({
-      link,
+      // link,
       showtoolbar: false,
       showcatalog: false,
       chapterIndex,
       index
     })
-   
+
     this.getBookContent(()=>{
       setTimeout(()=>{
         self.setData({
@@ -395,7 +400,7 @@ Page({
     let w = (curFont - minFontSize)*unit;
     let windowHeight=0;
     let self=this;
-   
+
     wx.setNavigationBarTitle({
       title
     })
@@ -407,7 +412,7 @@ Page({
         timingFunc: 'easeIn'
       },
       success(){
-        
+
       },
       fail(err){
       console.log(err);

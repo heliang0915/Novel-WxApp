@@ -1,4 +1,8 @@
 <!--bookshelf.wxml-->
-<view>
-    我的书架
+<view class="my-shelf-wrap">
+  <view class="my-shelf-wrap-inner">
+      <view wx:for="{{[1,2,3,4,5,6,7,8,9]}}" class="shelf-book update" style="background:url('../../../images/cover.jpg');background-size:100% 100%;">
+
+      </view>
+    </view>
 </view>

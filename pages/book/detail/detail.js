@@ -4,6 +4,10 @@ let  app = getApp()
 let fetch=require("../../../utils/fetch.js");
 let util = require("../../../utils/util.js");
 let config = require("../../../config.js");
+let {getStorage}=util;
+
+let key="shelfListInfo";
+let openId="openid";
 Page({
   data: {
     golds: [1,2,3,4,5], //分数
@@ -13,7 +17,8 @@ Page({
     id: 0,
     book: {},
     comments:[],
-    recommends:[]
+    recommends:[],
+    isAdd:false //默认没有加入书架
   },
   onShareAppMessage: function () {
   },
@@ -22,7 +27,6 @@ Page({
   onPullDownRefresh:function(){
     wx.stopPullDownRefresh() //停止下拉刷新
   },
-
   //获取章节list
   getBookChapters: function (source, index, page) {
     let { _id } = source
@@ -37,8 +41,76 @@ Page({
       self.getBookChapters(sources[0], 0, 1, () => { });
     })
   },
-
-
+  //检测数组中是否存在该书信息
+  checkShelfs(bkIds,id){
+    let isHas=false;
+    for(let bkId of bkIds){
+        if(bkId==id){
+            isHas=true;
+            break;
+        }
+    }
+    return isHas;
+  },
+  //加入书架
+  addShelf(event){
+    let dataset = event.currentTarget.dataset;
+    let { id } = dataset;
+    let _this=this;
+    let shelfListInfo={};
+    getStorage(openId).then((openid)=>{
+        getStorage(key).then((data)=>{
+          let obj=JSON.parse(data);
+          let ShelfList=obj[openid];
+          if(ShelfList){
+              if(!_this.checkShelfs(ShelfList,id)){
+                  ShelfList.push(id);
+              }
+          }else{
+            let ShelfList=[];
+            ShelfList.push(id);
+          }
+          shelfListInfo[openid]=ShelfList;
+          wx.setStorage({
+            key:key,
+            data:JSON.stringify(shelfListInfo)
+          })
+          _this.setData({
+             isAdd:true
+          })
+        }).catch((e)=>{
+          let _this=this;
+          let ShelfList=[];
+          ShelfList.push(id);
+          shelfListInfo[openid]=ShelfList;
+          wx.setStorage({
+            key,
+            data:JSON.stringify(shelfListInfo)
+          })
+          _this.setData({
+             isAdd:true
+          })
+        })
+    });
+  },
+  //获取加入书架状态
+  isAddShelf(callback){
+    let _this=this;
+    let { id } = this.data;
+    getStorage(openId).then((openid)=>{
+        getStorage(key).then((data)=>{
+          let obj=JSON.parse(data);
+          let ShelfList=obj[openid];
+          if(ShelfList){
+            callback(_this.checkShelfs(ShelfList,id));
+          }else{
+             callback(false)
+          }
+        }).catch((e)=>{
+             callback(false)
+        })
+    });
+  },
   //获取书籍详情
   getBookDetail() {
     let { id } = this.data;
@@ -60,7 +132,7 @@ Page({
       console.log(err);
     })
   },
-  //获取书籍相关推荐 
+  //获取书籍相关推荐
   getBookRecommend(){
     let { id } = this.data;
     let self = this;
@@ -76,7 +148,6 @@ Page({
     }).catch((err) => {
       console.log(err);
     })
-
   },
   //获取书籍评论
   getBookComments() {
@@ -98,7 +169,7 @@ Page({
       console.log(err);
     })
   },
-  
+
   //事件处理函数
   gotoDetail: function (event) {
     let dataset = event.currentTarget.dataset;
@@ -128,7 +199,7 @@ Page({
   },
   onLoad: function (options) {
     let { id, title } = options;
-
+    let self=this;
     wx.setNavigationBarTitle({
       title
     })
@@ -141,5 +212,12 @@ Page({
     this.getBookComments();
     //相关推荐
     this.getBookRecommend();
+    //获取是否加入书架
+    this.isAddShelf((isAdd)=>{
+      console.log(isAdd);
+      self.setData({
+        isAdd
+      })
+    })
   }
 })

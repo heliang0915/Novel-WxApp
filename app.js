@@ -9,7 +9,7 @@ App({
      var h = wx.getSystemInfoSync().windowHeight;
      this.globalData.w = w;
      this.globalData.h= h;
-   } 
+   }
     // var self=this;
     // wx.getSetting({
     //   success: (res) => {
@@ -17,7 +17,7 @@ App({
     //       // console.log("res::::" + JSON.stringify(res));
     //     if (authSetting && authSetting['scope.userInfo']){
     //       // console.log("res::::" + JSON.stringify(res));
-           
+
     //     }else{
     //       console.log("需要登录");
     //       setTimeout(()=>{

@@ -85,8 +85,8 @@ swiper-item .image-banner{
 .book-detail .book-desc{
   color: #979797;
   font-size:28rpx;
-  min-height: 150rpx;
-  line-height: 48rpx;
+  min-height: 144rpx;
+  line-height: 45rpx;
   margin:0;
   /* text-indent: 2em; */
 }

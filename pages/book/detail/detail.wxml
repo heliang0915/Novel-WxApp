@@ -49,12 +49,12 @@
       <!--看过 -->
       <view class="book-look">
         <view class='book-look-inner'>
-          看过  
+          看过
           <view style='margin-left:10rpx;' wx:for="{{[1,2,3,4,5]}}" wx:key="{{item}}">
                   <image class="star" src="{{empty_star}}"></image>
             </view>
         </view>
-         
+
       </view>
       <!--简介  -->
       <view class='book-desc'>
@@ -103,7 +103,6 @@
       <view class='book-recommend'>
         <view class='h3'>相关推荐</view>
         <view class='recomment-books'>
-
           <view class='recomment-book-item' bindtap='gotoDetail'  data-title="{{item.title}}" data-id='{{item._id}}' wx:key="item" wx:for="{{recommends}}">
               <image src="{{item.cover}}"></image>
               <text>{{item.title}}</text>
@@ -114,7 +113,8 @@
     <!--加入书架 开始阅读漂浮  -->
     <view class='book-toolbar-bottom'>
        <view class='book-toolbar-bottom-inner'>
-        <view class='book-btn btn-line'>加入书架</view>
+          <view wx:if="{{!isAdd}}" bindtap='addShelf' data-id='{{book._id}}' class='book-btn btn-line'>加入书架</view>
+          <view wx:else   class='book-btn btn-line book-shef-disabled'>已加入书架</view>
           <view bindtap='goToReading' data-id='{{book._id}}'  data-title="{{book.title}}" class='book-btn '>开始阅读</view>
        </view>
     </view>

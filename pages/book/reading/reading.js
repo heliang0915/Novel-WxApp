@@ -7,13 +7,6 @@ let config = require("../../../config.js");
 let { maxFontSize, minFontSize } = config.toolbar.fontSize;
 //单位量
 let unit = 100/(maxFontSize - minFontSize);
-
-// var time = 0;
-// var touchDot = 0;//触摸时的原点
-// var touchPageY=0;
-// var interval = "";
-// var flag_hd = true;
-
 Page({
   data: {
       pageAry: [], //目录分页
@@ -21,6 +14,7 @@ Page({
       id:'',
       title:'',
       chapterIndex:0, //章节索引
+      realNum:0,
       chapters:[],
       sources:[],
       sourceSel:0,
@@ -36,74 +30,14 @@ Page({
       showtoolbar:false,
       showcatalog: false
   },
-
-  // onShow: function () {
-  //   flag_hd = true;    //重新进入页面之后，可以再次执行滑动切换页面代码
-  //   clearInterval(interval); // 清除setInterval
-  //   time = 0;
-  // },
-  // // 触摸开始事件
-  // touchStart: function (e) {
-  //   touchDot = e.touches[0].pageX; // 获取触摸时的原点
-  //   touchPageY=e.touches[0].pageY;
-
-  //   // 使用js计时器记录时间    
-  //   interval = setInterval(function () {
-  //     time++;
-  //   }, 100);
-  // },
-  // // 触摸结束事件
-  // touchEnd: function (e) {
-  //   let self=this;
-  //   var touchMove = e.changedTouches[0].pageX;
-  //   var touchMoveY = e.changedTouches[0].pageX;
-  //   let {scrollTop}=this.data;
-  //   let diff=touchMoveY-touchPageY;
-  //   let absDiff=Math.abs(diff);
-  //   console.log("diff:::::::::"+diff);
-  //   let addTop=diff>0?(scrollTop-absDiff<=0?0:scrollTop-absDiff):(scrollTop+absDiff);
-
-  //   console.log(addTop);
-
-
-
-  //   // 向左滑动
-  //   if (touchMove - touchDot <= -100 && time < 10 && flag_hd == true) {
-  //     // flag_hd = false;
-  //     //执行切换页面的方法
-  //     console.log("向右滑动");
-  //     wx.showToast({
-  //       title: '向右滑动',
-  //       icon: 'none',
-  //       duration: 2000
-  //     })
-  //     self.nextPage()
-  //   }
-  //   // 向右滑动   
-  //   if (touchMove - touchDot >= 100 && time < 10 && flag_hd == true) {
-  //     // flag_hd = false;
-  //     //执行切换页面的方法
-  //     console.log("向左滑动");
-  //     wx.showToast({
-  //       title: '向左滑动',
-  //       icon: 'none',
-  //       duration: 2000
-  //     })
-  //     self.prePage()
-  //   }
-  //   clearInterval(interval); // 清除setInterval
-  //   time = 0;
-  // },
   onShareAppMessage: function () {
   },
   bindPickerChange: function (e,index,callback) {
-    // console.log('picker发送选择改变，携带值为', e.detail.value)
     let { sources, sourceSel } = this.data;
     let value=null;
     if (e){
       value = e.detail.value;
     }
-    // let { value}=e.detail;
     if(index!=null){
       value=index;
     }
@@ -112,22 +46,27 @@ Page({
     })
     let page = parseInt(value)+1;
     this.getBookChapters(sources[0], sourceSel, page, callback);
-    
+
   },
   //获取分页信息
   getCatalogPages(isShow){
     let { sources}=this.data;
     let isLoading=isShow==null?true:false;
-    console.log(sources[0]);
     let { _id } = sources[0];
     let self=this;
     fetch.get(`wx/chapterPages/${_id}`, isLoading).then((data) => {
       self.setData({
         pageAry: data
       })
-
     })
   },
+  backReading(){
+     this.setData({
+       showtoolbar: false,
+       showcatalog: false
+     })
+  },
+  
   onReachBottom:function(){
   },
   onPullDownRefresh:function(){
@@ -135,7 +74,6 @@ Page({
   },
   //防止滚动目录页面 后边和页面也跟着动
   catalogMove(event){
-
   },
   changeFontSieSilder(e){
     let {value} = e.detail;
@@ -150,7 +88,6 @@ Page({
     let {target} = event;
     let { id} = target;
     let { curBg, fontColor, activeId}=this.data;
-
     if (id=="moon"){
       curBg ="#1d1d1f";
       fontColor ="#ffffff";
@@ -167,9 +104,6 @@ Page({
       fontColor,
       activeId
     })
-    // wx.setNavigationBarColor({
-    //   frontColor: '#ffffff'
-    // });
     wx.setNavigationBarColor({
       frontColor: fontColor,
       backgroundColor: curBg,
@@ -193,8 +127,6 @@ Page({
         sources:data
       })
       self.getBookChapters(sources[0], sourceSel,1,()=>{});
-     
-      // console.log(books)
     })
   },
   //获取章节list
@@ -242,7 +174,7 @@ Page({
       callback == null ? function () {} : callback();
     })
   },
-  
+
   showToolbar(){
     let {showtoolbar}=this.data;
     this.setData({
@@ -288,7 +220,6 @@ Page({
         }
     }
     chapterIndex--;
-    // chapterIndex = parseInt(chapterIndex) + (index) * 100;
     if (isOver){
       this.bindPickerChange(null, index, () => {
         setTimeout(() => {
@@ -320,7 +251,6 @@ Page({
           index
         })
       }
-
     }
     chapterIndex++;
     if (isOver) {
@@ -337,7 +267,6 @@ Page({
     this.setData({
       curFont: value
     })
-    // console.log(`发生change事件，携带值为`, e.detail.value)
   },
   // 根据索引去指定章节
   gotoPage(event, chapterIndex){
@@ -348,9 +277,12 @@ Page({
       let { indx} = dataset;
       chapterIndex = indx;
    }
-    // chapterIndex=parseInt(chapterIndex)+(index)*100;
+    let realNum= chapterIndex + (100 * (index));
+    this.setData({
+     realNum
+    })
+    console.log("realNum:::::::" + realNum);
     console.log("chapterIndex:::" + chapterIndex);
-
     let { chapters}=this.data;
     let chapter = chapters[chapterIndex];
     let { link } = chapter;
@@ -361,7 +293,6 @@ Page({
       chapterIndex,
       index
     })
-   
     this.getBookContent(()=>{
       setTimeout(()=>{
         self.setData({
@@ -369,25 +300,14 @@ Page({
         })
       },100)
     });
-    // this.goToReading(link, chapterIndex);
   },
   //去目录页
   gotoCatalog(event){
     let { showcatalog}=this.data;
     this.setData({
-      showcatalog: !showcatalog
+      showcatalog: !showcatalog,
+      showtoolbar: false
     })
-    // let dataset = event.currentTarget.dataset;
-    // let { id ,title} = dataset;
-    // wx.navigateTo({
-    //   url: `/pages/book/catalog/catalog?id=${id}&title=${title}`,
-    //   success: function () {
-    //     console.log("跳转成功");
-    //   },
-    //   fail: function (e) {
-    //     console.log("调用失败...." + JSON.stringify(e));
-    //   }
-    // });
   },
   onLoad: function (options) {
     let { id, title, link, indx} = options;
@@ -395,7 +315,7 @@ Page({
     let w = (curFont - minFontSize)*unit;
     let windowHeight=0;
     let self=this;
-   
+
     wx.setNavigationBarTitle({
       title
     })
@@ -407,7 +327,6 @@ Page({
         timingFunc: 'easeIn'
       },
       success(){
-        
       },
       fail(err){
       console.log(err);

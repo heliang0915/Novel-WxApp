@@ -74,10 +74,17 @@ let fetch = config => {
         }
       })
     }).catch((err) => {
-      wx.hideNavigationBarLoading() //完成停止加载
+
+     isShow
+       ? wx.hideNavigationBarLoading():null; //完成停止加载
       isShow
         ? wx.hideLoading()
         : null;
+
+        wx.showToast({
+          title: err.errMsg,
+          icon:'none'
+        })
       reject(err);
     })
   })

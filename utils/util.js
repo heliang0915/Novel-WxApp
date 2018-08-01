@@ -11,11 +11,13 @@ const formatTime = date => {
 
 const formatNumber = n => {
   n = n.toString()
-  return n[1] ? n : '0' + n
+  return n[1]
+    ? n
+    : '0' + n
 }
 
 function getDateDiff(dateTimeStamp) {
-  var result='';
+  var result = '';
   var minute = 1000 * 60;
   var hour = minute * 60;
   var day = hour * 24;
@@ -24,7 +26,9 @@ function getDateDiff(dateTimeStamp) {
   var week = day * 7;
   var now = new Date().getTime();
   var diffValue = now - dateTimeStamp;
-  if (diffValue < 0) { return; }
+  if (diffValue < 0) {
+    return;
+  }
   var monthC = diffValue / month;
   var weekC = diffValue / week;
   var dayC = diffValue / day;
@@ -32,24 +36,36 @@ function getDateDiff(dateTimeStamp) {
   var minC = diffValue / minute;
   if (monthC >= 1) {
     result = "" + parseInt(monthC) + "月前";
-  }
-  else if (weekC >= 1) {
+  } else if (weekC >= 1) {
     result = "" + parseInt(weekC) + "周前";
-  }
-  else if (dayC >= 1) {
+  } else if (dayC >= 1) {
     result = "" + parseInt(dayC) + "天前";
-  }
-  else if (hourC >= 1) {
+  } else if (hourC >= 1) {
     result = "" + parseInt(hourC) + "小时前";
-  }
-  else if (minC >= 1) {
+  } else if (minC >= 1) {
     result = "" + parseInt(minC) + "分钟前";
   } else
     result = "刚刚";
   return result;
 }
 
+//获取Storage中的值
+function getStorage(key) {
+  return new Promise(function(resolve, reject) {
+    wx.getStorage({
+      key,
+      success: function(res) {
+        resolve(res.data);
+      },
+      fail(err) {
+        reject(err);
+      }
+    });
+  });
+}
+
 module.exports = {
   formatTime: formatTime,
-  getDateDiff: getDateDiff
+  getDateDiff: getDateDiff,
+  getStorage
 }

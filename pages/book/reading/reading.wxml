@@ -1,7 +1,6 @@
 <!--reading.wxml-->
 <scroll-view scroll-y   class='reading-wrap' scroll-top="{{scrollTop}}" catchtap='showToolbar' style='height:{{windowHeight}}px;background-color:{{curBg}};color:{{fontColor}};'>
    <view class='chapter-title' style='font-size:{{curFont}}rpx;'>{{chapter.title}}</view>
-   <!-- <slider left-icon="cancel" min="20" max="40" value="{{curFont}}" right-icon="success_no_circle" bindchange="changeFontSizeSilder" step="2"/> -->
    <view class='chapter-content' style='font-size:{{curFont}}rpx;' >
       <view class='chapter-content-item' wx:key="item" wx:for="{{chapter.cpContentAry}}">
          {{item}}
@@ -11,15 +10,10 @@
         <view class='chapter-btn' catchtap='prePage'>上一章</view>
         <view class='chapter-btn' catchtap='nextPage'>下一章</view>
     </view>
-   
    <!--toolbar  -->
-   <!-- <slider left-icon="cancel" right-icon="success_no_circle" bindchange="changeFontSizeSilder" step="5"/> -->
    <view class='reading-toolbar' style='transform:translateY({{showtoolbar==true?"0%":"150%"}})'>
-      <view class='toolbar-font-size'>  
-           <view data-dir='reduce' >小</view> 
-          <!-- <view class='progress-bar'>
-             <view class='precent' style="width:{{w}}%"></view>
-          </view>  -->
+      <view class='toolbar-font-size'>
+           <view data-dir='reduce' >小</view>
            <view class='progress-bar'>
           <slider left-icon="cancel" min="30" max="60" value="{{curFont}}" right-icon="success_no_circle"  bindchange="changeFontSizeSilder" step="2" style='width:100%;'/>
           </view>
@@ -39,7 +33,8 @@
 </scroll-view>
  <!-- 目录-->
 <view class='catalog-wrap' style='transform:translateX({{showcatalog==true?"0%":"-100%"}})'>
-    <view class='catalog-book-name'>
+   <view class='catalog-main'>
+     <view class='catalog-book-name'>
        {{title}}
     </view>
     <view class='catalog-name'>
@@ -53,13 +48,13 @@
       </view>
     </view>
     <scroll-view scroll-y touchmove="catalogMove"   style='height:{{windowHeight-60}}px;' class='catalog-list' >
-      <view wx:for="{{chapters}}"  wx:for-index="index" catchtap='gotoPage' data-indx="{{index}}"  data-id='{{id}}'data-title="{{title}}" data-link="{{item.link}}"  wx:key="item" class='chapter-item'>
-       <view style="color:{{chapterIndex==index?'red':'#666'}}">
+      <view wx:for="{{chapters}}"  wx:for-index="ind" catchtap='gotoPage' data-indx="{{ind}}"  data-id='{{id}}'data-title="{{title}}" data-link="{{item.link}}"  wx:key="item" class='chapter-item'>
+       <view style="color:{{realNum==item.no?'red':'#666'}}">
            {{item.title}}
-       </view> 
+       </view>
        <view style='white-space:nowrap;' class="{{item.isVip==true?'pay':'free'}}" >{{item.isVip==true?"付费":"免费"}}</view>
       </view>
     </scroll-view>
-   
-
+   </view>
+   <view catchtap='backReading' class='catalog-back'></view>
 </view>

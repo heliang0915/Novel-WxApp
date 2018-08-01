@@ -31,7 +31,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 8,
+			"current": 3,
 			"list": [
 				{
 					"id": -1,
@@ -46,16 +46,16 @@
 					"query": ""
 				},
 				{
-					"id": -1,
+					"id": 2,
 					"name": "书籍详情",
-					"pathName": "pages/book/detail",
-					"query": "id=53115e30173bfacb4904897e"
+					"pathName": "pages/book/detail/detail",
+					"query": "id=53671112aa662d1b1500158f&title=1111"
 				},
 				{
 					"id": 3,
 					"name": "阅读页面",
 					"pathName": "pages/book/reading/reading",
-					"query": "id=56a75bf2b5d32bd50d61879f&&title=哈哈哈"
+					"query": "id= 53671112aa662d1b1500158f&&title=哈哈哈"
 				},
 				{
 					"id": 4,

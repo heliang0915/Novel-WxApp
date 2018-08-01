@@ -97,16 +97,16 @@
   width: 696rpx;
   height: 84rpx;
   font-size: 26rpx;
-  margin: 34rpx auto;  
+  margin: 34rpx auto;
   border-radius: 8rpx;
 }
 .book-toolbar-bottom{
-   background: #FFF; 
+   background: #FFF;
   position: fixed;
   bottom: 0;
   border-top: 1px solid #eee;
-   width: 100%; 
-  
+   width: 100%;
+
 }
 .book-toolbar-bottom-inner{
   display: flex;
@@ -202,7 +202,7 @@
 .short-zan{
   display: flex;
   justify-content: space-between;
-   margin-top: 10rpx; 
+   margin-top: 10rpx;
 }
 .short-zan .zan-count{
   display: flex;
@@ -219,16 +219,16 @@
 .recomment-books{
   display: flex;
   flex-wrap: wrap;
-   justify-content: space-between;   
-  margin:40rpx 0; 
+   justify-content: space-between;
+  margin:40rpx 0;
 }
 .recomment-book-item{
    display: flex;
    flex-direction: column;
-   justify-content: center;  
+   justify-content: center;
 }
 .recomment-book-item text{
-  text-align: center;  
+  text-align: center;
   display: inline-block;
   margin: 10rpx 0 20rpx;
 
@@ -239,4 +239,10 @@
 .comment-title{
   display: block;
   font-size: 26rpx;
+}
+
+.book-shef-disabled{
+  color: #FFF;
+  border:1px solid #ccc;
+  background: #ccc;
 }

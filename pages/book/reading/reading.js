@@ -303,7 +303,7 @@ Page({
     let isOver = false; //是否要翻页
     let { chapterIndex, chapters, pageAry, index} = this.data;
     if (chapterIndex >= chapters.length - 1) {
-      if (index >= pageAry.length) {
+      if (index >= pageAry.length-1) {
         wx.showToast({
           title: '已经是最后一章了',
           icon: 'none',

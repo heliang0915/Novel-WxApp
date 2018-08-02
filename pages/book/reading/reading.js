@@ -66,7 +66,7 @@ Page({
        showcatalog: false
      })
   },
-  
+
   onReachBottom:function(){
   },
   onPullDownRefresh:function(){
@@ -284,10 +284,17 @@ Page({
     console.log("realNum:::::::" + realNum);
     console.log("chapterIndex:::" + chapterIndex);
     let { chapters}=this.data;
-    let chapter = chapters[chapterIndex];
-    let { link } = chapter;
+    if(chapters.length){
+      let chapter = chapters[chapterIndex];
+      let { link } = chapter;
+      this.setData({
+        link
+      });
+    }
+    // let chapter = chapters[chapterIndex];
+    // let { link } = chapter;
     this.setData({
-      link,
+      // link,
       showtoolbar: false,
       showcatalog: false,
       chapterIndex,

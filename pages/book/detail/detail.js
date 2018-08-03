@@ -4,10 +4,12 @@ let  app = getApp()
 let fetch=require("../../../utils/fetch.js");
 let util = require("../../../utils/util.js");
 let config = require("../../../config.js");
-let {getStorage}=util;
+let {getStorage,getShelfBooksIds}=util;
 
-let key="shelfListInfo";
-let openId="openid";
+let {storage}=config;
+let {shelfList:key,openid}=storage;
+// let key=config.storageKey.shelfListInfo;
+// let openId=config.storageKey.openid;
 Page({
   data: {
     golds: [1,2,3,4,5], //分数
@@ -58,58 +60,85 @@ Page({
     let { id } = dataset;
     let _this=this;
     let shelfListInfo={};
-    getStorage(openId).then((openid)=>{
-        getStorage(key).then((data)=>{
-          let obj=JSON.parse(data);
-          let ShelfList=obj[openid];
-          if(ShelfList){
-              if(!_this.checkShelfs(ShelfList,id)){
-                  ShelfList.push(id);
-              }
-          }else{
-            let ShelfList=[];
-            ShelfList.push(id);
+    getShelfBooksIds().then(({ShelfList,openId})=>{
+      if(ShelfList){
+          if(!_this.checkShelfs(ShelfList,id)){
+              ShelfList.push(id);
           }
-          shelfListInfo[openid]=ShelfList;
-          wx.setStorage({
-            key:key,
-            data:JSON.stringify(shelfListInfo)
-          })
-          _this.setData({
-             isAdd:true
-          })
-        }).catch((e)=>{
-          let _this=this;
-          let ShelfList=[];
-          ShelfList.push(id);
-          shelfListInfo[openid]=ShelfList;
-          wx.setStorage({
-            key,
-            data:JSON.stringify(shelfListInfo)
-          })
-          _this.setData({
-             isAdd:true
-          })
-        })
-    });
+      }else{
+        let ShelfList=[];
+        ShelfList.push(id);
+      }
+      shelfListInfo[openId]=ShelfList;
+      wx.setStorage({
+        key:key,
+        data:shelfListInfo
+      })
+      _this.setData({
+         isAdd:true
+      })
+    }).catch(({err,openId})=>{
+      let _this=this;
+      let ShelfList=[];
+      ShelfList.push(id);
+      shelfListInfo[openId]=ShelfList;
+      wx.setStorage({
+        key,
+        data:shelfListInfo
+      })
+      _this.setData({
+         isAdd:true
+      })
+    })
+    // getStorage(openId).then((openid)=>{
+    //     getStorage(key).then((data)=>{
+    //       let obj=JSON.parse(data);
+    //       let ShelfList=obj[openid];
+    //       if(ShelfList){
+    //           if(!_this.checkShelfs(ShelfList,id)){
+    //               ShelfList.push(id);
+    //           }
+    //       }else{
+    //         let ShelfList=[];
+    //         ShelfList.push(id);
+    //       }
+    //       shelfListInfo[openid]=ShelfList;
+    //       wx.setStorage({
+    //         key:key,
+    //         data:JSON.stringify(shelfListInfo)
+    //       })
+    //       _this.setData({
+    //          isAdd:true
+    //       })
+    //     }).catch((e)=>{
+    //       let _this=this;
+    //       let ShelfList=[];
+    //       ShelfList.push(id);
+    //       shelfListInfo[openid]=ShelfList;
+    //       wx.setStorage({
+    //         key,
+    //         data:JSON.stringify(shelfListInfo)
+    //       })
+    //       _this.setData({
+    //          isAdd:true
+    //       })
+    //     })
+    // });
   },
   //获取加入书架状态
   isAddShelf(callback){
     let _this=this;
     let { id } = this.data;
-    getStorage(openId).then((openid)=>{
-        getStorage(key).then((data)=>{
-          let obj=JSON.parse(data);
-          let ShelfList=obj[openid];
-          if(ShelfList){
-            callback(_this.checkShelfs(ShelfList,id));
-          }else{
-             callback(false)
-          }
-        }).catch((e)=>{
-             callback(false)
-        })
-    });
+    getShelfBooksIds().then((ShelfList)=>{
+        if(ShelfList){
+          callback(_this.checkShelfs(ShelfList,id));
+        }else{
+           callback(false)
+        }
+      }).catch((e)=>{
+          callback(false)
+    })
+
   },
   //获取书籍详情
   getBookDetail() {

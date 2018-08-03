@@ -1,3 +1,9 @@
+
+
+let config=require("../config");
+let {storage}=config;
+let {shelfList:shelfListInfo,openid}=storage;
+
 const formatTime = date => {
   const year = date.getFullYear()
   const month = date.getMonth() + 1
@@ -5,8 +11,7 @@ const formatTime = date => {
   const hour = date.getHours()
   const minute = date.getMinutes()
   const second = date.getSeconds()
-
-  return [year, month, day].map(formatNumber).join('/') + ' ' + [hour, minute, second].map(formatNumber).join(':')
+  return [year, month, day].map(formatNumber).join('/') + ' ' + [hour, minute, second].map(formatNumber).join(':');
 }
 
 const formatNumber = n => {
@@ -63,9 +68,25 @@ function getStorage(key) {
     });
   });
 }
-
+//获取加入书架的书籍
+function getShelfBooksIds(){
+    return new Promise(function(resolve, reject) {
+      getStorage(openid).then((openId)=>{
+          getStorage(shelfListInfo).then((data)=>{
+            let obj=data;
+            let ShelfList=obj[openId];
+              resolve({ShelfList,openId});
+          }).catch((err)=>{
+              reject({err,openId})
+          })
+      }).catch((err)=>{
+         reject({err,openId});
+      });
+    });
+}
 module.exports = {
   formatTime: formatTime,
   getDateDiff: getDateDiff,
-  getStorage
+  getStorage,
+  getShelfBooksIds
 }

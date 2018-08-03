@@ -8,7 +8,7 @@ Page({
   data: {
      list:[],
      isSelectAll:false, //是否选中
-     isEdit:false
+     isEdit:false //是否编辑
   },
   onReachBottom:function(){},
   onPullDownRefresh:function(){},

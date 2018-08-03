@@ -129,7 +129,7 @@ Page({
   isAddShelf(callback){
     let _this=this;
     let { id } = this.data;
-    getShelfBooksIds().then((ShelfList)=>{
+    getShelfBooksIds().then(({ShelfList})=>{
         if(ShelfList){
           callback(_this.checkShelfs(ShelfList,id));
         }else{

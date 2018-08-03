@@ -1,7 +1,16 @@
 <!--bookshelf.wxml-->
 <view class="my-shelf-wrap">
   <view class="my-shelf-wrap-inner">
-      <view wx:for="{{list}}"  wx:key="item" class="shelf-book update" style="background:url('http://img.1391.com/api/v1/bookcenter/cover/1/683452/683452_b8c0ecaea75144f6a5873756bc515dfd.jpg/');background-size:100% 100%;">
+      <view wx:for="{{list}}" longpress="inEdit"   data-id='{{item._id}}' data-title="{{item.title}}"  wx:key="item" class="shelf-book update {{isSelectAll==true?'checked':''}}" style="background:url('{{item.cover}}');background-size:100% 100%;">
+      </view>
+    </view>
+    <!--悬浮编辑删除 -->
+    <view class='prop-win' style="display:{{isEdit==true?'block':'none'}}">
+      <view class='del-btn' >
+        删除 catchtap='goToBookDetail' 
+      </view>
+      <view class='sel-btn {{isSelectAll==true?"checked":""}}' catchtap='selectAll'>
+         全选
       </view>
     </view>
 </view>

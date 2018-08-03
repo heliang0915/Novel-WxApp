@@ -30,6 +30,20 @@ App({
     // })
 
   },
+  //事件处理函数
+  gotoDetail: function (event) {
+    let dataset = event.currentTarget.dataset;
+    let {id,title}=dataset;
+    wx.navigateTo({
+      url: `/pages/book/detail/detail?id=${id}&title=${title}`,
+      success:function(){
+        console.log("跳转成功");
+      },
+      fail:function(e){
+        console.log("调用失败...." + JSON.stringify(e));
+      }
+    })
+  },
   onPageNotFound() {
     console.log("没有发现")
   },

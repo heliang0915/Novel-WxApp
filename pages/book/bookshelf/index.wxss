@@ -54,13 +54,42 @@
 }
 .del-btn{
   margin-left: 20rpx;
+  display: flex;
+  align-items: center;
+}
+.del-btn::before{
+   content:'';
+   width: 40rpx;
+   height: 40rpx;
+   background:url('https://blogapi.top/assets/images/delete.png');
+   background-size: 100% 100%;
+   display: inline-block;
+   margin-right: 4rpx;
 }
 
 .sel-btn{
   margin-right: 30rpx;
   display: flex;
 }
-.sel-btn::before,.shelf-book::before{
+.checkbox{
+  width: 40rpx;
+  height: 40rpx;
+  display:inline-block;
+  background:url('https://www.blogapi.top/assets/images/unchecked.png');
+  background-size: 100% 100%;
+  margin-right: 6rpx;
+  background-color:#FFF;
+  border-radius: 50%;
+  position: absolute;
+  right: 0;
+  top: 10rpx;
+}
+.checkbox.checked{
+   background:url('https://www.blogapi.top/assets/images/checked.png');
+   background-size: 100% 100%;
+   background-color:#FFF;
+}
+.sel-btn::before{
   content: '';
   width: 40rpx;
   height: 40rpx;
@@ -72,7 +101,7 @@
   border-radius: 50%;
 }
 
-.sel-btn.checked::before,.shelf-book.checked::before{
+.sel-btn.checked::before{
    background:url('https://www.blogapi.top/assets/images/checked.png');
    background-size: 100% 100%;
    background-color:#FFF;
@@ -82,6 +111,6 @@
     position: absolute;
     /* left: 0rpx; */
     top: 6rpx;
-    left:166rpx;
+    left:0rpx;
     /* background: red; */
 }

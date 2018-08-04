@@ -1,13 +1,14 @@
 <!--bookshelf.wxml-->
 <view class="my-shelf-wrap">
   <view class="my-shelf-wrap-inner">
-      <view wx:for="{{list}}" longpress="inEdit"   data-id='{{item._id}}' data-title="{{item.title}}"  wx:key="item" class="shelf-book update {{isSelectAll==true?'checked':''}}" style="background:url('{{item.cover}}');background-size:100% 100%;">
+      <view wx:for="{{list}}" catchlongpress="inEdit" catchtap='clickBook'  data-id='{{item._id}}' data-title="{{item.title}}"  wx:key="item" class="shelf-book update {{isSelectAll==true?'checked':''}}" style="background:url('{{item.cover}}');background-size:100% 100%;">
+        <view  data-id="{{item._id}}" class='checkbox {{bookSelect[item._id]!=null?"checked":""}}' style="display:{{isEdit==true?'block':'none'}}"></view>
       </view>
     </view>
     <!--悬浮编辑删除 -->
-    <view class='prop-win' style="display:{{isEdit==true?'block':'none'}}">
-      <view class='del-btn' >
-        删除 catchtap='goToBookDetail' 
+    <view class='prop-win' style="{{isEdit==true?'':'display:none'}}">
+      <view class='del-btn' catchtap='deleteBook'  data-id='{{item._id}}'>
+        删除 
       </view>
       <view class='sel-btn {{isSelectAll==true?"checked":""}}' catchtap='selectAll'>
          全选

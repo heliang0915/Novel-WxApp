@@ -68,6 +68,34 @@ function getStorage(key) {
     });
   });
 }
+
+//删除缓存中的书籍
+function removeStorageIds(key,ids) {
+  let newList=[];
+  return new Promise(function (resolve, reject) {
+    getShelfBooksIds().then(({ ShelfList,openId}) => {
+      Object.keys(ShelfList).forEach((key)=>{
+        if (ids.indexOf(ShelfList[key])==-1){
+          if (ShelfList[key]){
+            newList.push(ShelfList[key]);
+          }
+        }
+        let shelfListInfo={};
+        shelfListInfo[openId] = newList;
+        wx.setStorage({
+          key: config.storage.shelfList,
+          data: shelfListInfo
+        })
+        resolve({ ShelfList, openId});
+      })
+     
+    });
+  }).catch((err) => {
+    reject(err);
+  });
+
+}
+
 //获取加入书架的书籍
 function getShelfBooksIds(){
     return new Promise(function(resolve, reject) {
@@ -88,5 +116,6 @@ module.exports = {
   formatTime: formatTime,
   getDateDiff: getDateDiff,
   getStorage,
-  getShelfBooksIds
+  getShelfBooksIds,
+  removeStorageIds
 }

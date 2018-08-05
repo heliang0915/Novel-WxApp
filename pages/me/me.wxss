@@ -39,7 +39,6 @@
   justify-content: space-between;
   align-items: center;
 }
-
 .me-item image{
    width: 30rpx;
    height: 30rpx;

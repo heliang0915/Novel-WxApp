@@ -31,7 +31,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 9,
+			"current": 10,
 			"list": [
 				{
 					"id": -1,
@@ -90,7 +90,13 @@
 				{
 					"id": -1,
 					"name": "书架",
-					"pathName": "pages/book/bookshelf/index"
+					"pathName": "pages/book/bookshelf/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "搜索",
+					"pathName": "pages/book/search/index"
 				}
 			]
 		}

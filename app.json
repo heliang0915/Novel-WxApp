@@ -10,6 +10,7 @@
     "pages/book/category/sub/index",
     "pages/book/finish/index",
     "pages/book/free/index",
+    "pages/book/search/index",
     "pages/login/index"
   ],
   "window": {

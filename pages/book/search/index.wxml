@@ -1,0 +1,52 @@
+<!--pages/book/search/index.wxml-->
+<view class='search-wrap'>
+  <!-- 搜索顶部 -->
+  <view class='search-top'>
+     <input class='search' bindinput='searchBook' placeholder='搜索您想要的小说'></input>
+     <view class='cannel'>取消</view>
+  </view>
+  <!-- 检索结果 -->
+  <view class="search-reuslt" wx:if='{{isSearch}}'>
+    <view class='search-item'>
+      <view>
+        <text class='active'>结</text>果
+      </view> 
+      <image src="https://blogapi.top/assets/images/delete.png"></image>
+    </view>
+    <view class='search-item'>
+      <view>结果</view> 
+      <image src="https://blogapi.top/assets/images/delete.png"></image>
+    </view>
+   <view class='search-item'>
+      <view>结果</view> 
+      <image src="https://blogapi.top/assets/images/delete.png"></image>
+    </view>
+  </view>
+  <!--热门搜索 -->
+  <view class='search-hot'>
+    <view class='hot-title'>热门搜索</view>
+    <view class='hot-content'>
+        <view class='tag'>给我一个十八岁</view>
+        <view class='tag active'>给我一个</view>
+        <view class='tag'>给我一个十八岁</view>
+         <view class='tag'>给我一个十八岁</view>
+         <view class='tag'>给我一个</view>
+        <view class='tag'>给我一个十八岁</view>
+    </view>
+    <!--  搜索历史 -->
+   <view class='search-hot'>
+    <view class='hot-title'>
+      <view>搜索历史</view>
+      <view catchtap='deleteHistory'><image src="https://blogapi.top/assets/images/delete.png"></image></view> 
+    </view>
+    <view class='hot-content'>
+        <view class='tag'>给我一个十八岁</view>
+        <view class='tag active'>给我一个</view>
+        <view class='tag'>给我一个十八岁</view>
+         <view class='tag'>给我一个十八岁</view>
+         <view class='tag'>给我一个</view>
+        <view class='tag'>给我一个十八岁</view>
+    </view>
+    </view>
+  </view>
+</view>

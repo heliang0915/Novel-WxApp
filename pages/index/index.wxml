@@ -1,6 +1,11 @@
 <!--我的书库-->
 <view class="container">
   <view class='book-city-top'>
+   <navigator  class='search-area' url='../../pages/book/search/index'>
+     <view class="search-input" >
+       搜索您想要的小说
+     </view>
+   </navigator>
     <swiper indicator-dots='true' autoplay='true' interval='5000' circular='true'>
       <block wx:for="{{banners}}" wx:key="index">
         <swiper-item bindtap="gotoTab">
